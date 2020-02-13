@@ -23,6 +23,7 @@
     "url": "https://github.com/jidemobell/newbride/issues"
   },
   "scripts": {
+		"start": "node src/index.js",
     "server": "nodemon  src/index.js",
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
