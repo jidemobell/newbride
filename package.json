@@ -1,4 +1,5 @@
 {
+	"homepage": "https://jidemobell.github.io/newbride",
 	"scripts": {
 		"predeploy": "cd client && yarn run  build",
 		"deploy": "cd client && gh-pages -d build"
