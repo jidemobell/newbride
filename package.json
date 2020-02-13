@@ -1,0 +1,9 @@
+{
+	"scripts": {
+		"predeploy": "cd client && yarn run  build",
+		"deploy": "cd client && gh-pages -d build"
+	},
+	"devDependencies": {
+		"gh-pages": "^2.2.0"
+	}
+}

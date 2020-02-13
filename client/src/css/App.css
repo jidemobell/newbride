@@ -1,0 +1,188 @@
+
+@import './common.css';
+
+
+.App {
+	text-align: center;
+	min-height: 100vh;
+}
+
+
+.top {
+	padding: 50px 100px;
+	/* min-height: 100vh; */
+	align-items: stretch;
+	flex: 1 0 auto;
+}
+
+
+#brand{
+	width: 50px;
+	margin-top: 15px;
+}
+
+header{
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+
+	transition: background 0.5s ease; 
+	padding: 0 10px;
+}
+
+header:hover{
+	background: white;
+}
+
+.app-navs{
+ justify-content: space-evenly;
+ padding-top: 15px;
+}
+
+.app-navs > li{
+	text-decoration: none;
+	list-style: none;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	margin-left: 20px;
+	cursor: pointer;
+	font-size: 1.2rem;
+}
+
+.hero{
+	display: flex;
+	height: 100%;
+	margin-top: 50px;
+  background: white;
+	padding: 7px;
+	border-radius: 3px;
+	border: 1px solid rgba(128, 128, 128, 0.089);
+	box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.226);
+	/* flex-grow: 1; */
+}
+
+/* header, .hero, footer{
+	flex-shrink: 0;
+} */
+
+#design{
+	/* width: 20%; */
+	width: 300px;
+}
+
+.hero-message{
+	/* flex:1 1 auto; */
+	/* margin-left: 90px; */
+	background: #E4E5E2;
+	width: 75%;
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+hr{
+	width: 100px;
+	height: 0px;
+	margin: 10px 15px;
+	/* flex: 0 1 auto; */
+}
+
+.hero-message > a{
+	background: rgba(0, 0, 0, 0.863);
+	color: white;
+	padding: 20px 40px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background ease-in-out 1s;
+}
+
+.hero-message > a:hover{
+   background: rgba(0, 0, 0, 0.705);
+}
+
+
+.hero-message > p {
+	font-weight: bold;
+}
+
+
+.hero-style{
+  line-height: initial;
+}
+
+#signature{
+	margin-top: 20px;
+	/* width: initial; */
+}
+
+
+footer{
+	border-top: solid 1px rgba(0, 0, 0, 0.178);
+	flex-shrink: 0;
+	margin: 0px 100px;
+	padding-bottom: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#copyright{
+	
+	margin-top: 10px;
+	font-size: 0.7rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+
+
+.social{
+	width: 30px;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	.hero-message > a  {
+		padding: 10px 10px;
+		/* font-weight: lighter; */
+		font-size: 0.9rem;
+	}
+
+	#signature {
+		margin-top: 6px;
+		width: 60px;
+	}
+
+	.hero-message span {
+		margin-top: 10px;
+	}
+
+	hr {
+		margin-top: 20px;
+		width: 60px;
+	}
+
+	.hero-message p {
+		margin-bottom: 7px;
+		font-size: calc(100% - 4px);
+	}
+
+	.social{
+		width: 20px;
+	}
+}
+
+/* Gallery */
+.collections {
+	text-align: center;
+	min-height: 100vh;
+	padding: 50px 100px;
+	align-items: stretch;
+	flex: 1 0 auto;
+}
+
+
+.slots {
+	/* border: 1px solid red; */
+}

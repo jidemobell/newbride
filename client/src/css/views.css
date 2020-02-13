@@ -1,0 +1,9 @@
+/* If the screen size is 600px wide or less, hide the element */
+
+@media screen and (max-width: 768px) {
+	.hero-message > a  {
+		padding: 100px 10px;
+		font-weight: lighter;
+		background: green;
+	}
+}
