@@ -4,9 +4,13 @@ export default function Slot({ pic }) {
   return (
     <div
       className="flex-row slots hvr-grow"
-      style={{  margin: "25px", width: "300px" }}
+      // style={{  margin: "25px", width: "300px" }}
     >
-      <img src={pic} alt={`${pic}`}  />
+      <img
+        src={pic}
+        alt={`${pic}`}
+        style={{ margin: "25px", width: "300px" }}
+      />
     </div>
   );
 }

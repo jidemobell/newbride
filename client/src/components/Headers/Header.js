@@ -24,7 +24,9 @@ export default function Header() {
           <span className="first-border">About</span>
         </li>
         <li className="flex-row hvr-grow">
-          <span className="first-border">Contact</span>
+				<Link to="/contact" className="navlink">
+            <span className="first-border">Contact</span>
+          </Link>
         </li>
       </nav>
     </header>

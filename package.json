@@ -1,10 +1,34 @@
 {
-	"homepage": "https://jidemobell.github.io/newbride",
-	"scripts": {
-		"predeploy": "cd client && yarn run  build",
-		"deploy": "cd client && gh-pages -d build"
-	},
-	"devDependencies": {
-		"gh-pages": "^2.2.0"
-	}
+  "homepage": "https://jidemobell.github.io/newbride",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "gh-pages": "^2.2.0",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "name": "newbride",
+  "version": "1.0.0",
+  "description": "mercy adams llc cms",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jidemobell/newbride.git"
+  },
+  "author": "jide olaniyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jidemobell/newbride/issues"
+  },
+  "scripts": {
+    "server": "nodemon  src/index.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "cd client && yarn install  --only=dev &&  yarn install  && yarn run build"
+  },
+  "engines": {
+    "node": "12.x"
+  }
 }

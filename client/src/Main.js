@@ -2,6 +2,7 @@ import React from "react";
 
 import Home from './components/Home';
 import Collections from './components/Collections'
+import Contact from './components/Contact'
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ export default function Main() {
       <switch>
         <Route path="/" exact component={Home} />
         <Route path="/collections" component={Collections} />
+        <Route path="/contact" component={Contact} />
       </switch>
     </Router>
   );
