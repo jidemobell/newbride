@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f87fd3c3.chunk.css",
+    "main.js": "/static/js/main.9dfc548a.chunk.js",
+    "main.js.map": "/static/js/main.9dfc548a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.cea588d5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.cea588d5.js.map",
+    "static/js/2.a1d1326f.chunk.js": "/static/js/2.a1d1326f.chunk.js",
+    "static/js/2.a1d1326f.chunk.js.map": "/static/js/2.a1d1326f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a2065d292a557278c7b65a3b6cdf8162.js": "/precache-manifest.a2065d292a557278c7b65a3b6cdf8162.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.f87fd3c3.chunk.css.map": "/static/css/main.f87fd3c3.chunk.css.map",
+    "static/js/2.a1d1326f.chunk.js.LICENSE.txt": "/static/js/2.a1d1326f.chunk.js.LICENSE.txt",
+    "static/media/big_sign.png": "/static/media/big_sign.a62b69e5.png",
+    "static/media/fb.svg": "/static/media/fb.4b48e739.svg",
+    "static/media/ig2.svg": "/static/media/ig2.2295a344.svg",
+    "static/media/wedding-2.jpg": "/static/media/wedding-2.b7d50938.jpg",
+    "static/media/wedding-3.jpg": "/static/media/wedding-3.0cb70df9.jpg",
+    "static/media/wedding-4.jpg": "/static/media/wedding-4.cbcebcfe.jpg",
+    "static/media/wedding-5.jpg": "/static/media/wedding-5.af186ec9.jpg",
+    "static/media/wedding-6.jpg": "/static/media/wedding-6.a494d239.jpg",
+    "static/media/woman-4.jpg": "/static/media/woman-4.44e858bd.jpg",
+    "static/media/woman.jpg": "/static/media/woman.60c10f24.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cea588d5.js",
+    "static/js/2.a1d1326f.chunk.js",
+    "static/css/main.f87fd3c3.chunk.css",
+    "static/js/main.9dfc548a.chunk.js"
+  ]
+}
