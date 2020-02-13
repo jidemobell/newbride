@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const path = require('path')
@@ -5,6 +6,7 @@ const path = require('path')
 const app = express()
 app.use(cors)
 
+console.log(process.env.PORT)
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
