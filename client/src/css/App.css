@@ -183,6 +183,52 @@ footer{
 }
 
 
-.slots {
-	/* border: 1px solid red; */
+
+
+/* contact */
+.contact input[type=submit]{
+	width: 359px;
+	height: 50px;
+  /* width: 280px; */
+  margin: 3px;
+  border: none;
+  background: rgba(0, 0, 0, 0.863);
+  color: white;
+}
+
+.contact input[type=email], input[type=text]{
+	height: 30px;
+	width: 350px;
+  /* margin: 1px; */
+  border: 1px solid rgba(0, 0, 0, 0.432);
+	/* color: white; */
+	padding: 5px;
+  margin-bottom: 10px;
+}
+
+.contact input[type=email]:focus, input[type=text]:focus{
+	border-color: #1559A8;
+}
+
+
+textarea{
+	width: 350px;
+  height: 139px;
+  border: none;
+  border-radius: 3px;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  border: 1px gray solid;
+}
+
+
+textarea:focus{
+  border-color: #1559A8;
+}
+
+.inquiries{
+	letter-spacing: 0.4rem;
+	margin-left: -40px;
 }
