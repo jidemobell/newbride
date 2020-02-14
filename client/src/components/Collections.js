@@ -13,7 +13,7 @@ import wedding6 from '../images/wedding-5.jpg'
 import wedding7 from '../images/wedding-6.jpg'
 
 
-export const weddings = [
+const weddings = [
 	// wedding1,
 	wedding2,
 	wedding3,
@@ -23,7 +23,7 @@ export const weddings = [
 	wedding7
 ]
 
-import { weddings } from "../images/imager";
+// import { weddings } from "../images/imager";
 
 export default function Collection() {
   return (
