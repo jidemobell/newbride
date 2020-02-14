@@ -5,6 +5,24 @@ import CollectionHeader from "./Headers/CollectionHeader";
 import Slot from "../components/slot";
 import Footer from "./Footer"
 
+import wedding2 from '../images/wedding-2.jpg'
+import wedding3 from '../images/wedding-3.jpg'
+import wedding4 from '../images/woman-4.jpg'
+import wedding5 from '../images/wedding-4.jpg'
+import wedding6 from '../images/wedding-5.jpg'
+import wedding7 from '../images/wedding-6.jpg'
+
+
+export const weddings = [
+	// wedding1,
+	wedding2,
+	wedding3,
+	wedding4,
+	wedding5,
+	wedding6,
+	wedding7
+]
+
 import { weddings } from "../images/imager";
 
 export default function Collection() {
