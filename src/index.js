@@ -3,6 +3,20 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path')
 
+const tracer = require('tracer');
+const colors = require('colors');
+
+// eslint-disable-next-line import/prefer-default-export
+const logger = tracer.colorConsole({
+  filters: [
+    colors.underline, colors.green,
+    {
+      warn: colors.yellow,
+      error: [colors.red, colors.bold],
+    },
+  ],
+});
+
 const app = express()
 app.use(cors)
 
@@ -23,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
 
 if (!module.parent) {
   app.listen(process.env.PORT || 5000, () => {
-    console.log(`CORS-enabled web server listening on port ${process.env.PORT || 5000}`);
+    logger.info(`CORS-enabled web server listening on port ${process.env.PORT || 5000}`);
   });
 }
 

@@ -5,8 +5,8 @@ import Collections from './components/Collections'
 import Contact from './components/Contact'
 
 import {
-  BrowserRouter as Router,
-  // Switch,
+	BrowserRouter,
+  Switch,
   Route,
   // Link,
   // useRouteMatch,
@@ -15,12 +15,12 @@ import {
 
 export default function Main() {
   return (
-    <Router>
-      <switch>
+    <BrowserRouter>
+      <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/collections" component={Collections} />
         <Route path="/contact" component={Contact} />
-      </switch>
-    </Router>
+      </Switch>
+    </BrowserRouter>
   );
 }

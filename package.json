@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "tracer": "^1.0.2"
   },
   "name": "newbride",
   "version": "1.0.0",
@@ -28,7 +29,7 @@
     "server": "nodemon  src/index.js",
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "cd client && yarn install  --only=dev &&  yarn install  && yarn run build"
+    "heroku-postbuild": "cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn run build"
   },
   "engines": {
     "node": "12.x"
