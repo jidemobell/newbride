@@ -25,9 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 
 console.log(process.env.PORT)
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
