@@ -1,6 +1,6 @@
 import React from "react";
-// import Header from "./Headers/Header";
-import CollectionHeader from "./Headers/CollectionHeader";
+import Header from "./Headers/Header";
+// import CollectionHeader from "./Headers/CollectionHeader";
 
 import Slot from "../components/slot";
 import Footer from "./Footer"
@@ -29,7 +29,8 @@ export default function Collection() {
   return (
     <div className="App flex-col">
       <div className="top flex-col">
-        <CollectionHeader />
+        {/* <CollectionHeader /> */}
+				<Header />
         <section
           style={{ padding: "10px 40px", flexWrap: "wrap", boxSizing: "content-box" }}
           className="flex-row center"

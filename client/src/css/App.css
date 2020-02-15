@@ -232,3 +232,8 @@ textarea:focus{
 	letter-spacing: 0.4rem;
 	margin-left: -40px;
 }
+
+.about{
+	line-height: 2rem;
+	font-size: larger;
+}

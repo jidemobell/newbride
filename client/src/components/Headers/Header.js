@@ -21,10 +21,12 @@ export default function Header() {
           </Link>
         </li>
         <li className="flex-row hvr-grow">
-          <span className="first-border">About</span>
+          <Link to="/about" className="navlink">
+            <span className="first-border">About</span>
+          </Link>
         </li>
         <li className="flex-row hvr-grow">
-				<Link to="/contact" className="navlink">
+          <Link to="/contact" className="navlink">
             <span className="first-border">Contact</span>
           </Link>
         </li>

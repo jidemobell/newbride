@@ -9,14 +9,16 @@ export default function CollectionHeader() {
       {/* <div>
         <img src={brand} id="brand" alt="brand" />
       </div> */}
-			<section className="flex-col center" style={{marginTop: "-10px" }}>
-          <h1 className="flex-row sacramento">
-            <hr style={{ width: "60px", marginTop: "40px" }} />
-            <span style={{ fontSize: "60px", fontWeight: "100" }}>Collections</span>
-            <hr style={{ width: "60px", marginTop: "40px" }} />
-          </h1>
-        </section>
-      <nav className="flex-row app-navs sanser" style={{marginTop: "20px" }}>
+      <section className="flex-col center" style={{ marginTop: "-10px" }}>
+        <h1 className="flex-row sacramento">
+          <hr style={{ width: "50px", marginTop: "40px" }} />
+          <span style={{ fontSize: "50px", fontWeight: "100", margin: "none" }}>
+            Collections
+          </span>
+          <hr style={{ width: "60px", marginTop: "40px" }} />
+        </h1>
+      </section>
+      <nav className="flex-row app-navs sanser" >
         <li className="flex-row hvr-grow">
           <Link to="/" className="navlink">
             <span className="first-border">Home</span>
@@ -31,7 +33,7 @@ export default function CollectionHeader() {
           <span className="first-border">About</span>
         </li>
         <li className="flex-row hvr-grow">
-				<Link to="/contact" className="navlink">
+          <Link to="/contact" className="navlink">
             <span className="first-border">Contact</span>
           </Link>
         </li>
