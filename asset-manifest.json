@@ -1,32 +1,33 @@
 {
   "files": {
-    "main.css": "/newbride/static/css/main.f87fd3c3.chunk.css",
-    "main.js": "/newbride/static/js/main.93cb3589.chunk.js",
-    "main.js.map": "/newbride/static/js/main.93cb3589.chunk.js.map",
+    "main.css": "/newbride/static/css/main.99a4c382.chunk.css",
+    "main.js": "/newbride/static/js/main.e6f6273b.chunk.js",
+    "main.js.map": "/newbride/static/js/main.e6f6273b.chunk.js.map",
     "runtime-main.js": "/newbride/static/js/runtime-main.97306a6b.js",
     "runtime-main.js.map": "/newbride/static/js/runtime-main.97306a6b.js.map",
-    "static/js/2.a1d1326f.chunk.js": "/newbride/static/js/2.a1d1326f.chunk.js",
-    "static/js/2.a1d1326f.chunk.js.map": "/newbride/static/js/2.a1d1326f.chunk.js.map",
+    "static/js/2.98791015.chunk.js": "/newbride/static/js/2.98791015.chunk.js",
+    "static/js/2.98791015.chunk.js.map": "/newbride/static/js/2.98791015.chunk.js.map",
     "index.html": "/newbride/index.html",
-    "precache-manifest.0cedae76b3cb10725420616153d784eb.js": "/newbride/precache-manifest.0cedae76b3cb10725420616153d784eb.js",
+    "precache-manifest.995412f5132472c0406dbfcc6662c9f6.js": "/newbride/precache-manifest.995412f5132472c0406dbfcc6662c9f6.js",
     "service-worker.js": "/newbride/service-worker.js",
-    "static/css/main.f87fd3c3.chunk.css.map": "/newbride/static/css/main.f87fd3c3.chunk.css.map",
-    "static/js/2.a1d1326f.chunk.js.LICENSE.txt": "/newbride/static/js/2.a1d1326f.chunk.js.LICENSE.txt",
+    "static/css/main.99a4c382.chunk.css.map": "/newbride/static/css/main.99a4c382.chunk.css.map",
+    "static/js/2.98791015.chunk.js.LICENSE.txt": "/newbride/static/js/2.98791015.chunk.js.LICENSE.txt",
     "static/media/big_sign.png": "/newbride/static/media/big_sign.a62b69e5.png",
     "static/media/fb.svg": "/newbride/static/media/fb.4b48e739.svg",
     "static/media/ig2.svg": "/newbride/static/media/ig2.2295a344.svg",
-    "static/media/wedding-2.jpg": "/newbride/static/media/wedding-2.b7d50938.jpg",
-    "static/media/wedding-3.jpg": "/newbride/static/media/wedding-3.0cb70df9.jpg",
-    "static/media/wedding-4.jpg": "/newbride/static/media/wedding-4.cbcebcfe.jpg",
-    "static/media/wedding-5.jpg": "/newbride/static/media/wedding-5.af186ec9.jpg",
-    "static/media/wedding-6.jpg": "/newbride/static/media/wedding-6.a494d239.jpg",
-    "static/media/woman-4.jpg": "/newbride/static/media/woman-4.44e858bd.jpg",
-    "static/media/woman.jpg": "/newbride/static/media/woman.60c10f24.jpg"
+    "static/media/wedding-2.jpg": "/newbride/static/media/wedding-2.72c1dcfb.jpg",
+    "static/media/wedding-3.jpg": "/newbride/static/media/wedding-3.ff617578.jpg",
+    "static/media/wedding-4.jpg": "/newbride/static/media/wedding-4.744b3402.jpg",
+    "static/media/wedding-5.jpg": "/newbride/static/media/wedding-5.a83e8377.jpg",
+    "static/media/wedding-6.jpg": "/newbride/static/media/wedding-6.b404e7bf.jpg",
+    "static/media/woman-4.jpg": "/newbride/static/media/woman-4.0d623def.jpg",
+    "static/media/woman.jpg": "/newbride/static/media/woman.5d6eab77.jpg",
+    "static/media/workroom.jpeg": "/newbride/static/media/workroom.1346b4b8.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.97306a6b.js",
-    "static/js/2.a1d1326f.chunk.js",
-    "static/css/main.f87fd3c3.chunk.css",
-    "static/js/main.93cb3589.chunk.js"
+    "static/js/2.98791015.chunk.js",
+    "static/css/main.99a4c382.chunk.css",
+    "static/js/main.e6f6273b.chunk.js"
   ]
 }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/newbride/precache-manifest.0cedae76b3cb10725420616153d784eb.js"
+  "/newbride/precache-manifest.995412f5132472c0406dbfcc6662c9f6.js"
 );
 
 self.addEventListener('message', (event) => {
