@@ -1,8 +1,8 @@
-CREATE USER "app-admin" WITH PASSWORD 'password';
+CREATE USER "admin" WITH PASSWORD 'password';
 CREATE ROLE
 CREATE USER "app-user" WITH PASSWORD 'password';
 CREATE ROLE
-CREATE DATABASE "test-database" WITH OWNER "app-admin";
+CREATE DATABASE "bridal" WITH OWNER "admin";
 CREATE DATABASE
 \c "test-database"
 -- You are now connected to database "test-database" as user "postgres".
