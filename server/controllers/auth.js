@@ -14,7 +14,10 @@ const login = async (req, res) => {
 	if(!username || !password )
 	return res.status(400).json({ error: 'Username or password is Empty' });
 	
-	query = `SELECT * FROM users WHERE username=${username}`;
+	query = {
+		text: `SELECT * FROM users WHERE username=$1`,
+		values:  [username]
+	}
 	/**
 	 * if user does not exist redirect ti signup
 	 */
