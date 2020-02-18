@@ -21,18 +21,18 @@ child = exec("pg_isready", (err, stdout, stderr) => {
 	.then(result => console.log('Postgresql Connected ....'))
 	.catch(err => {
 		console.log(err)
-		process.exit()
+		process.exitCode = 1;
 	})
 });
 
 
 class Database {
   constructor() {
-		this.user = PGUSER === undefined ? process.exit() : PGUSER
-		this.port= PGPORT === undefined ? process.exit()  : PGPORT || '5432'
-		this.password = PGPASSWORD === undefined ? process.exit()  : PGPASSWORD
-		this.db = PGDATABASE === undefined ? process.exit() : PGDATABASE
-		this.host = PGHOST === undefined ? process.exit() : PGHOST || 'localhost'
+		this.user = PGUSER === undefined ? process.exitCode = 1 : PGUSER
+		this.port= PGPORT === undefined ? process.exitCode = 1  : PGPORT || '5432'
+		this.password = PGPASSWORD === undefined ? process.exitCode = 1  : PGPASSWORD
+		this.db = PGDATABASE === undefined ? process.exitCode = 1 : PGDATABASE
+		this.host = PGHOST === undefined ? pprocess.exitCode = 1 : PGHOST || 'localhost'
 	}
 
  startPool() {
