@@ -1,21 +1,23 @@
-require('dotenv').config()
+require('./db/index')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const { setPool } = require('./db/index')
+const { Database } = require('./db/index')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const pool = setPool()
+// const pool = Database.startPool()
 
-pool.query('select * from bridal_app.users', (err, res) => {
-	console.log(err, res)
-  pool.end()
-})
+// pool.query('select * from bridal_app.users', (err, res) => {
+// 	console.log(err, res)
+//   pool.end()
+// })
+
+
 
 var app = express();
 
