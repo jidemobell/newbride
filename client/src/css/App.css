@@ -242,3 +242,24 @@ textarea:focus{
 	border: 1px solid rgba(0, 0, 0, 0.021);
 	box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.041);
 }
+
+
+/* Login form */
+
+.contact input[type=password]{
+	height: 30px;
+	width: 350px;
+  /* margin: 1px; */
+  border: 1px solid rgba(0, 0, 0, 0.432);
+	/* color: white; */
+	padding: 5px;
+  margin-bottom: 10px;
+}
+
+.contact  input[type=password]:focus{
+	border-color: #1559A8;
+}
+
+.login{
+	font-size: 25px;
+}

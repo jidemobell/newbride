@@ -1,8 +1,14 @@
 require('dotenv').config()
 const { Pool } = require("pg");
 const { exec } = require("child_process");
+const fs = require('fs');
+const path = require('path');
 const { PGUSER, PGDATABASE, PGPASSWORD, PGPORT, PGHOST} = process.env
 var child;
+
+
+const scriptPath = path.basename('init.sql')
+
 
 child = exec("pg_isready", (err, stdout, stderr) => {
   if (err) {
@@ -18,11 +24,13 @@ child = exec("pg_isready", (err, stdout, stderr) => {
 	const dbInstance = new Database()
 	const pool = dbInstance.startPool()
 	Database.queryDb(`SELECT schema_name FROM information_schema.schemata WHERE schema_name = 'bridal_app'`, pool)
-	.then(result => console.log('Postgresql Connected ....'))
-	.catch(err => {
+	.then(result => console.log('Postgresql Connected ....'))	.catch(err => {
 		console.log(err)
-		process.exitCode = 1;
+		process.exitCode = 1
 	})
+
+	Database.initializeScript(pool)
+
 });
 
 
@@ -56,10 +64,29 @@ class Database {
 	static async queryDb(text, pool) {
 		try {
 			const res = await pool.query(text);
+			await pool.end()
 			return res.rows;
 		} catch (err) {
 			throw err.stack;
 		}
 	}
+
+	static async initializeScript(pool){
+			 fs.readFile('../init.sql', 'utf-8',  (err, data) => {
+				if (err) {
+					console.error('error reading sql file', err);
+				}
+				pool.query(data , (err, res) => {
+					if (err) {
+						console.error('SQL ERR: ', err);
+					}
+					console.log("Writing Sql Script....")
+					return res
+				})	
+			})
+		} 
 }
+
+module.exports = Database
+
 

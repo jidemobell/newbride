@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken')
 const bycrpt = require('bcrypt')
 
-const queryHelper = require('./util/index')
-const pool = require('./db/index')
+const Database = require('../db/index')
+
+const pool = new Database().startPool()
 
 
 const secret = process.env.SECRET || 'my secret'
@@ -15,7 +16,7 @@ const login = async (req, res) => {
 	return res.status(400).json({ error: 'Username or password is Empty' });
 	
 	query = {
-		text: `SELECT * FROM users WHERE username=$1`,
+		text: `SELECT username from pg_user WHERE username=$1`,
 		values:  [username]
 	}
 	/**
@@ -25,8 +26,9 @@ const login = async (req, res) => {
 		const result = await pool.query(query);
 		
 		//if no such data is returned
+		// console.log(result.rowCount)
 		if(result.rowCount === 0) 
-		return res.status(401).json({ error: 'Username or password invalid' });
+		return res.status(401).json({ error: 'User does not exist' });
 				
 		//match password
 		const isMatch = await bycrpt.compare(password, result.password)
@@ -40,11 +42,30 @@ const login = async (req, res) => {
 			id: result.id
 		}
     const token = jwt.sign(payload, secret, { expiresIn: 60 * 60 * 24 })
-		
+		pool.end()
 		res.status(200).json({ token, user })
 	} catch (error) {
 		res.status(500).json({ error: error.message });
 	}
 }
 
-module.exports = login;
+
+const registerAdmin = async (req, res) => {
+	const { username, password, role_type } = req.body
+	query = {
+		text: `INSERT INTO bridal_app.users (username, password, role_type) VALUES ($1, bridal_app.crypt($2, bridal_app.gen_salt('bf')), $3)`,
+		values: [username, password, role_type]
+	}
+	try {
+		const result = await pool.query(query)
+		await pool.end()
+		res.status(200).send(result.res)
+	} catch (error) {
+		res.status(500).json({ error: error.message });
+	}
+}
+
+module.exports = {
+	login,
+	registerAdmin
+}

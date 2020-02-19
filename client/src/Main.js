@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Collections from './components/Collections'
 import Contact from './components/Contact'
 import About from './components/About'
+import Login from './components/Login'
 
 import {
 	BrowserRouter,
@@ -22,6 +23,7 @@ export default function Main() {
         <Route path="/collections" component={Collections} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
   );
