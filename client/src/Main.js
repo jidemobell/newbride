@@ -23,7 +23,7 @@ export default function Main() {
         <Route path="/collections" component={Collections} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
-        <Route path="/login" component={Login} />
+        <Route path="/v1/login" component={Login} />
       </Switch>
     </BrowserRouter>
   );

@@ -7,7 +7,8 @@ const { PGUSER, PGDATABASE, PGPASSWORD, PGPORT, PGHOST} = process.env
 var child;
 
 
-const scriptPath = path.basename('init.sql')
+// const scriptPath = path.basename('init.sql')
+
 
 
 child = exec("pg_isready", (err, stdout, stderr) => {
@@ -64,7 +65,6 @@ class Database {
 	static async queryDb(text, pool) {
 		try {
 			const res = await pool.query(text);
-			await pool.end()
 			return res.rows;
 		} catch (err) {
 			throw err.stack;

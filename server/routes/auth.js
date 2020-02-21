@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router() 
 
 const { body, validationResult } = require('express-validator')
-const { login, registerAdmin } = require('../controllers/auth')
+const { login, registerAdmin, adminLogin } = require('../controllers/auth')
 
 
 
@@ -21,13 +21,14 @@ const loginValidationCheck = [
 
 
 router.post('/login',loginValidationCheck, (req, res) => {
+	const {username} = req.body
 	const errors = validationResult(req)
 	if(!errors.isEmpty()) {
 		return res.status(422).json ({
 			errors: errors.array()
 		})
 	}
-  login(req, res)
+  username === 'admin' ?  adminLogin(req, res) : login(req, res)
 })
 
 
