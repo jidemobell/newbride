@@ -1,7 +1,7 @@
 import React from "react";
 
-import Header from "./Headers/Header";
-import Footer from "./Footer";
+import Header from "../components/Headers/Header";
+import Footer from "../components/Footer";
 
 import workroom from "./../images/workroom.jpeg";
 

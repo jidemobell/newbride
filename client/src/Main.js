@@ -2,8 +2,8 @@ import React from "react";
 
 import Home from './containers/Home';
 import Collections from './components/Collections'
-import Contact from './components/Contact'
-import About from './components/About'
+import Contact from './containers/Contact'
+import About from './containers/About'
 import Login from './containers/Login'
 
 import {
