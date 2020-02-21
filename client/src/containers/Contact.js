@@ -44,7 +44,7 @@ export default function Contact() {
               <input type="text" placeholder="Name" />
               <input type="email" placeholder="Email" />
               <textarea type="text" />
-              <input type="submit" value="SUBMIT" />
+              <button type="submit" >SUBMIT</button>
               {/* <button type="submit" >SUBMIT</button> */}
             </form>
             {/* </div> */}
