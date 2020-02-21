@@ -6,8 +6,8 @@ import signature from "../images/big_sign.png";
 // import facebook from "../images/fb.svg";
 import woman from "../images/woman.jpg";
 
-import Header from "./Headers/Header";
-import Footer from "./Footer";
+import Header from "../components/Headers/Header";
+import Footer from "../components/Footer";
 
 function App() {
   return (

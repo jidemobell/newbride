@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 // import axios from 'axios'
-import Footer from "./Footer";
+import Footer from "../";
 import logo from "./../images/only_M.svg";
 import { stateContext } from '../store/index'
 import { authActions } from '../store/actions/auth'

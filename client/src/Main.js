@@ -1,10 +1,10 @@
 import React from "react";
 
-import Home from './components/Home';
+import Home from './containers/Home';
 import Collections from './components/Collections'
 import Contact from './components/Contact'
 import About from './components/About'
-import Login from './components/Login'
+import Login from './containers/Login'
 
 import {
 	BrowserRouter,
