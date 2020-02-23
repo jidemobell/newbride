@@ -210,6 +210,13 @@ footer{
 	border-color: #1559A8;
 }
 
+.contact input[type=email]:invalid:required{
+	border: 1px solid red;
+}
+
+.contact input[type=email]:invalid:required{
+	border: 1px solid rgba(255, 0, 0, 0.568);
+}
 
 textarea{
 	width: 350px;
@@ -262,4 +269,55 @@ textarea:focus{
 
 .login{
 	font-size: 25px;
+}
+
+
+/* Admin Page */
+.top-navs{
+	/* justify-content: space-evenly;
+	align-content: flex-start; */
+	border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+	height: 50px;
+	/* margin-top: 40px; */
+}
+
+.black{
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.13); */
+	color: white;
+	/* height: 50px; */
+	background: rgba(0, 0, 0, 0.863);
+	border: unset;
+}
+
+.white{
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.13); */
+	color: black;
+	/* height: 50px; */
+	background: white;
+	box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.226);
+	border: unset;
+}
+
+
+
+.top-navs li{
+ list-style: none;
+ text-decoration: none;
+ width: 30ex;
+ /* margin-right: 10ex; */
+ align-self: flex-end;
+ padding: 4px;
+ /* background: rgba(0, 0, 0, 0.863); */
+ /* color: white; */
+ border-right: 1px white solid;
+}
+
+
+
+.top-navs li:first-child{
+	border-top-left-radius: 5px;
+}
+
+.top-navs li:last-child{
+	border-top-right-radius: 5px;
 }

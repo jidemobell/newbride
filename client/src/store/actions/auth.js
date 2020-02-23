@@ -5,7 +5,7 @@ export async function authActions(data){
 		username: data.username,
 		Password: data.password
  }
- console.log(user)	
+	
  try {
 		let response = await axios.post(`/v1/login`,
 		 {
@@ -13,9 +13,9 @@ export async function authActions(data){
 				password: data.password
 		 }
 		)
-		console.log(response)
+		console.log(response.data)
 		return {
-			type: "LOGIN",
+			type: "LOGGEDIN",
 			payload: response.data
 		}
 	} catch (error) {

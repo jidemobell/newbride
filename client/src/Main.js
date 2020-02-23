@@ -5,6 +5,7 @@ import Collections from './components/Collections'
 import Contact from './containers/Contact'
 import About from './containers/About'
 import Login from './containers/Login'
+import Dashboard from './containers/Dashboard'
 
 import {
 	BrowserRouter,
@@ -15,6 +16,7 @@ import {
   // useParams
 } from "react-router-dom";
 
+
 export default function Main() {
   return (
     <BrowserRouter>
@@ -24,6 +26,7 @@ export default function Main() {
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
         <Route path="/v1/login" component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>
   );

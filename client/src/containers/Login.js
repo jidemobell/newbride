@@ -86,11 +86,22 @@ export default function Login() {
 							}
             >
 							<input 
+								type="file" 
+								// placeholder="Username"
+								id="input"
+								className="sanser"
+								// defaultValue={username}
+								// required
+								// minLength={4}
+							/>
+							<input 
 								type="text" 
 								placeholder="Username"
 								id="username"
 								className="sanser"
-                defaultValue={username}
+								defaultValue={username}
+								required
+								minLength={4}
 							/>
 							<input 
 								type="password" 
@@ -98,6 +109,8 @@ export default function Login() {
 								id="password" 
 								className="sanser"
 								defaultValue={password} 
+								minLength={8}
+								required
 							/>
               {/* <input type="submit" value="SUBMIT" /> */}
               <button type="submit" >SUBMIT</button>
