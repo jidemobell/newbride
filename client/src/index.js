@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import axios from "axios";
+import "bulma/css/bulma.css"
 import "./css/hover.css";
 import "./css/App.css";
 import "./css/index.css";

@@ -5,7 +5,7 @@ import Collections from './components/Collections'
 import Contact from './containers/Contact'
 import About from './containers/About'
 import Login from './containers/Login'
-import Dashboard from './containers/Dashboard'
+import Dashboard from './containers/Dashboard/Dashboard'
 
 import {
 	BrowserRouter,
