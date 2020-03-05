@@ -198,7 +198,7 @@ footer{
 
 .contact input[type=email], input[type=text]{
 	height: 30px;
-	width: 350px;
+	width: 359px;
   /* margin: 1px; */
   border: 1px solid rgba(0, 0, 0, 0.432);
 	/* color: white; */
@@ -253,9 +253,9 @@ textarea:focus{
 
 /* Login form */
 
-.contact input[type=password]{
+input[type=password]{
 	height: 30px;
-	width: 350px;
+	width: 359px;
   /* margin: 1px; */
   border: 1px solid rgba(0, 0, 0, 0.432);
 	/* color: white; */
@@ -309,7 +309,7 @@ textarea:focus{
  width: 20ex;
  /* margin-right: 10ex; */
  align-self: flex-end;
- padding: 7px;
+ padding: 6px;
  /* border-right: 1px white solid; */
  /* background: rgba(0, 0, 0, 0.863); */
  /* color: white; */
@@ -332,10 +332,29 @@ textarea:focus{
 
 
 
-/* .top-navs li:first-child{
-	border-top-left-radius: 5px;
+
+.gallery{
+	min-height: 20vh;
+	min-width: 60vw;
+	background: rgba(0, 0, 0, 0.164);
+	overflow-y: scroll;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
-.top-navs li:last-child{
-	border-top-right-radius: 5px;
-} */
+.upload-wrapper{
+	position: relative;
+}
+
+.upload-btn{
+	width: 359px;
+	height: 50px;
+	display: none;
+}
+
+.upload-button{
+	top: -5px;
+}
+

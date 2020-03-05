@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const bycrpt = require('bcrypt')
+// const bycrpt = require('bcrypt')
 
 const Database = require('../db/index')
 
@@ -8,35 +8,35 @@ const secret = process.env.SECRET || 'my secret'
 var query;
 
 
-const login = async (req, res) => {
-	const { username, password } = req.body;
-	if(!username || !password )
-	return res.status(400).json({ error: 'Username or password is Empty' });
+// const login = async (req, res) => {
+// 	const { username, password } = req.body;
+// 	if(!username || !password )
+// 	return res.status(400).json({ error: 'Username or password is Empty' });
 	
-	query = {
-		text: `SELECT username from pg_user WHERE username=$1`,
-		values:  [username]
-	}
-  try {
-		const result = await pool.query(query);
-		if(result.rowCount === 0) 
-		return res.status(401).json({ error: 'User does not exist' });			
-		//match password
-		const isMatch = await bycrpt.compare(password, result.password)
-		if(!isMatch)
-		return res
-			 .status(401)
-			 .json({error: 'the password is not correct'})
-		//generate web token
-		const payload = {
-			id: result.id
-		}
-    const token = jwt.sign(payload, secret, { expiresIn: 60 * 60 * 24 })
-		res.status(200).json({ token, user })
-	} catch (error) {
-		res.status(500).json({ error: error.message });
-	}
-}
+// 	query = {
+// 		text: `SELECT username from pg_user WHERE username=$1`,
+// 		values:  [username]
+// 	}
+//   try {
+// 		const result = await pool.query(query);
+// 		if(result.rowCount === 0) 
+// 		return res.status(401).json({ error: 'User does not exist' });			
+// 		//match password
+// 		const isMatch = await bycrpt.compare(password, result.password)
+// 		if(!isMatch)
+// 		return res
+// 			 .status(401)
+// 			 .json({error: 'the password is not correct'})
+// 		//generate web token
+// 		const payload = {
+// 			id: result.id
+// 		}
+//     const token = jwt.sign(payload, secret, { expiresIn: 60 * 60 * 24 })
+// 		res.status(200).json({ token, user })
+// 	} catch (error) {
+// 		res.status(500).json({ error: error.message });
+// 	}
+// }
 
 
 const adminLogin = async (req, res) => {
@@ -67,7 +67,7 @@ const adminLogin = async (req, res) => {
 			id:user.id
 		}
     const token = jwt.sign(payload, secret, { expiresIn: 60 * 60 * 24 })
-		res.status(200).json({ token, user })
+		res.status(200).json({ token })
 	} catch (error) {
 		res.status(500).json({ error: error.stack });
 	}
@@ -90,7 +90,7 @@ const registerAdmin = async (req, res) => {
 }
 
 module.exports = {
-	login,
+	// login,
 	adminLogin,
 	registerAdmin
 }

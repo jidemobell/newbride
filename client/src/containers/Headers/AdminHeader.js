@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from 'react-redux'
 
 
 import brand from "../../images/big_m.png";
@@ -10,7 +11,6 @@ export default function Header({user}) {
         <img src={brand} id="brand" alt="brand" />
       </div>
       <div>
-        <div className="initial">{}</div>
         <span>{user}</span>
       </div>
     </header>

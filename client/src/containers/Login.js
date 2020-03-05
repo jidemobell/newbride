@@ -1,56 +1,15 @@
-import React, {useState, useContext} from "react";
-// import axios from 'axios'
+import React, {useState} from "react";
+import {useDispatch} from 'react-redux'
+import { login } from '../redux/actions/auth'
 import Footer from "../components/Footer";
 import logo from "./../images/only_M.svg";
-import { stateContext } from '../store/index'
-import { authActions } from '../store/actions/auth'
-
-// var response;
-// const initialState = { username: '', password: ''}
 
 
 
-// async function authActions(data){
-// 	const user =  {
-// 		username: data.username,
-// 		Password: data.password
-//  }
-//  console.log(user)	
-//  try {
-// 		response = await axios.post(`/v1/login`,
-// 		 {
-// 				username: data.username,
-// 				password: data.password
-// 		 }
-// 		)
-// 		console.log(response)
-// 		return {
-// 			type: "LOGIN",
-// 			payload: response.data
-// 		}
-// 	} catch (error) {
-// 		console.log(error.response.data)
-// 		return {
-// 			type: "LOGIN_ERR",
-// 			payload: error
-// 		}
-// 	}
-// }
-
-// function reducer(state, action){
-//   switch (action.type) {
-// 		case "LOGIN":
-// 			return { success: action.payload }
-// 		default:
-// 			return state
-// 	}
-// }
-
-export default function Login() {
-	// const [state, dispatch] = useReducer(reducer, initialState)
+function Login() {
 	const [username] = useState("")
 	const [password] = useState("")
-	const { dispatch } = useContext(stateContext)
+	const dispatch = useDispatch()
   return (
     <div className="App flex-col">
       <div className="top flex-col center">
@@ -61,7 +20,7 @@ export default function Login() {
 						  style={{width: "10%"}}
 						/>
             <form
-              className="flex-col contact login"
+              className="flex-col  login"
               style={{
                 // padding: "10px",
 								marginTop: "20px",
@@ -80,20 +39,11 @@ export default function Login() {
 									})).filter(element => {
 										 return element.id !== "" &&  (userData[element.id] = element.value)
 									})
-									dispatch(authActions(userData))
+								   dispatch(login(userData))
 									e.target.reset()
 								}
 							}
             >
-							<input 
-								type="file" 
-								// placeholder="Username"
-								id="input"
-								className="sanser"
-								// defaultValue={username}
-								// required
-								// minLength={4}
-							/>
 							<input 
 								type="text" 
 								placeholder="Username"
@@ -113,7 +63,7 @@ export default function Login() {
 								required
 							/>
               {/* <input type="submit" value="SUBMIT" /> */}
-              <button type="submit" >SUBMIT</button>
+              <button  className="theme-button" type="submit" >SUBMIT</button>
             </form>
         </section>
       </div>
@@ -121,3 +71,6 @@ export default function Login() {
     </div>
   );
 }
+
+
+export default Login

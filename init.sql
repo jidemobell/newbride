@@ -7,12 +7,20 @@ CREATE TABLE IF NOT EXISTS bridal_app.users (
   last_login TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS bridal_app.images (
+	id SERIAL PRIMARY KEY,
+	name TEXT UNIQUE,
+	image_url TEXT
+);
+
 
 -- CREATE TYPE bridal_app.user_roles AS ENUM('admin', 'users')
 
 -- CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA bridal_app;
 
 ALTER TABLE bridal_app.users ADD COLUMN IF NOT EXISTS role_type TEXT;
+-- ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS content_type TEXT;
+-- ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS image TEXT;
 
 
 ALTER TABLE bridal_app.users ALTER COLUMN role_type SET DEFAULT 'users';

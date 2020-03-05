@@ -1,23 +1,42 @@
-import React from "react";
+import React, {useEffect} from "react";
+// import { createBrowserHistory } from 'history'
+import { useSelector, useDispatch } from 'react-redux'
 
+import ProtectedRoute from "./components/Resusable/ProtectedRoute";
 import Home from './containers/Home';
 import Collections from './components/Collections'
 import Contact from './containers/Contact'
 import About from './containers/About'
 import Login from './containers/Login'
 import Dashboard from './containers/Dashboard/Dashboard'
+import {getUser} from './redux/actions/user'
+
+// import {StateContext} from './store/index'
 
 import {
-	BrowserRouter,
+	// BrowserRouter,
   Switch,
-  Route,
-  // Link,
-  // useRouteMatch,
-  // useParams
+	Route,
+	// Router,
+	BrowserRouter,
+	Redirect,
+	// Redirect
 } from "react-router-dom";
 
 
+// export const history = createBrowserHistory()
+
 export default function Main() {
+	const isAuthenticated = useSelector(state => state.auth.authenticated)
+	const stateUser = useSelector(state => state.users.user)
+	const dispatch = useDispatch()
+	stateUser !== null || stateUser !== undefined &&  console.log("is it authenticated", stateUser.username)
+	// stateUser !== null && console.log("is it authenticated", stateUser['username'])
+
+  useEffect(() => {
+		 dispatch(getUser())
+	}, [isAuthenticated])
+
   return (
     <BrowserRouter>
       <Switch>
@@ -25,8 +44,16 @@ export default function Main() {
         <Route path="/collections" component={Collections} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
-        <Route path="/v1/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
+				<Route path="/users/dashboard">
+					{
+						stateUser !== null || stateUser !== undefined ? <Dashboard  /> : <Redirect to='/v1/login' />
+					}
+				</Route>
+				<ProtectedRoute  
+					path='/v1/login'
+					redirectTo={'/users/dashboard'}
+					component={Login}
+				/>	 
       </Switch>
     </BrowserRouter>
   );

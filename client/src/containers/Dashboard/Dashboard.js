@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector,useDispatch } from 'react-redux'
 
 import Footer from "../../components/Footer";
 import Users from "./Users";
 import Pages from './Pages'
+import Images from "./images"
 import Tabs from "../../components/Dashboard/tabs";
+import Header from '../../containers/Headers/AdminHeader'
+import {fetchImages } from '../../redux/actions/images'
 
 export default function AdminDashboard() {
-
-  const [viewData, setViewData] = useState("users");
+	const [viewData, setViewData] = useState("users");
+	const dispatch = useDispatch()
+	const { username } = Object(useSelector(state => state.users.user))
+  const imgArray = useSelector(state => state.image.images)
+	 
+	useEffect(() => dispatch(fetchImages()), [])
 
   return (
     <div className="App flex-col">
+      <Header user={username} />
       <div className="flex-col top">
         <Tabs toggleNav={data => setViewData(data)} />
         <div
@@ -19,10 +28,11 @@ export default function AdminDashboard() {
         >
           {viewData === "users" ? (
             <Users />
-          ) : viewData == "pages" ? (
+          ) : viewData === "pages" ? (
             <Pages />
           ) : (
-            <h1>All images</h1>
+            // <Images imageArray={gallery} />
+            <Images imageGallery={imgArray} />
           )}
         </div>
       </div>
