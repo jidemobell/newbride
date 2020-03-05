@@ -19,6 +19,7 @@ const dashboard = (req, res) => {
 
 
 const listUsers = (req, res) => {
+	console.log('USER route working')
 	let query = {
 		text: `SELECT * from bridal_app.users`,
 	}

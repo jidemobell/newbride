@@ -12,3 +12,6 @@ export const LOGIN_ERR = 'LOGIN_ERR'
 
 export const UPLOAD = 'UPLOAD'
 export const FETCHIMG = 'FETCHIMG'
+
+export const GET_PAGE = 'GET_PAGE'
+export const LIST_PAGES = 'LIST_PAGES'

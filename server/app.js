@@ -10,9 +10,10 @@ const cors = require('cors')
 
 
 const authRouter = require('./routes/auth')
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index')
+const usersRouter = require('./routes/users')
 const ImageRouter = require('./routes/images')
+const pageRouter = require('./routes/page')
 
 const app = express();
 
@@ -32,7 +33,8 @@ app.use(cors())
 app.use('/', indexRouter);
 app.use('/v1', authRouter);
 app.use('/users', usersRouter);
-app.use('/image', ImageRouter)
+app.use('/image', ImageRouter);
+app.use('/page', pageRouter);
 app.use(passport.initialize())
 
 // catch 404 and forward to error handler

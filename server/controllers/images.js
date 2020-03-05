@@ -24,10 +24,10 @@ const fileFilter = (req, file, callback) => {
 
  const upload = multer({
 	storage: storage,
-	// fileFilter: fileFilter,
-	// limits: {
-	// 	fileSize: 1024 * 1024 * 5
-	// }
+	fileFilter: fileFilter,
+	limits: {
+		fileSize: 1024 * 1024 * 5
+	}
 })
 
 //  const uploadImage = async(req, res) => {

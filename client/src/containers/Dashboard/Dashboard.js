@@ -9,6 +9,7 @@ import Images from "./images";
 import Tabs from "../../components/Dashboard/tabs";
 import Header from "../../containers/Headers/AdminHeader";
 import { fetchImages } from "../../redux/actions/images";
+import {listPages } from '../../redux/actions/page';
 import { SET_ERROR, LIST_USERS } from "../../redux/constants";
 
 export default function AdminDashboard() {
@@ -16,9 +17,12 @@ export default function AdminDashboard() {
   const dispatch = useDispatch();
   const { username } = Object(useSelector(state => state.users.user));
   const imgArray = useSelector(state => state.image.images);
-  const allUsers = useSelector(state => state.users.users);
+	const allUsers = useSelector(state => state.users.users);
+	const pages = useSelector(state => state.page.pages)
 
-  useEffect(() => dispatch(fetchImages()), []);
+	console.log("my pages", pages)
+
+  useEffect(() => dispatch(fetchImages()), [dispatch]);
   useEffect(() => {
     (async () => {
       let token = localStorage.getItem("token");
@@ -39,7 +43,8 @@ export default function AdminDashboard() {
         });
       }
     })();
-  }, []);
+	}, [dispatch]);
+	useEffect(() => dispatch(listPages()), [dispatch])
 
   return (
     <div className="App flex-col">
@@ -53,7 +58,7 @@ export default function AdminDashboard() {
           {viewData === "users" ? (
             <Users users={allUsers} />
           ) : viewData === "pages" ? (
-            <Pages />
+            <Pages pages={pages} />
           ) : (
             <Images imageGallery={imgArray} />
           )}

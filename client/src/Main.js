@@ -23,11 +23,11 @@ export default function Main() {
 	const isAuthenticated = useSelector(state => state.auth.authenticated)
 	const stateUser = useSelector(state => state.users.user)
 	const dispatch = useDispatch()
-	stateUser !== null || stateUser !== undefined &&  console.log("is it authenticated", stateUser.username)
+	// stateUser !== null || stateUser !== undefined &&  console.log("is it authenticated", stateUser.username)
 
   useEffect(() => {
 		 dispatch(getUser())
-	}, [isAuthenticated])
+	}, [isAuthenticated, dispatch])
 
   return (
     <BrowserRouter>

@@ -13,14 +13,18 @@ CREATE TABLE IF NOT EXISTS bridal_app.images (
 	image_url TEXT
 );
 
+CREATE TABLE IF NOT EXISTS bridal_app.pages (
+  id SERIAL PRIMARY KEY,
+	page_name TEXT UNIQUE,
+	image_ids JSONB[]
+);
 
--- CREATE TYPE bridal_app.user_roles AS ENUM('admin', 'users')
-
--- CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA bridal_app;
 
 ALTER TABLE bridal_app.users ADD COLUMN IF NOT EXISTS role_type TEXT;
--- ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS content_type TEXT;
--- ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS image TEXT;
+ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS page_ids JSONB[];
+ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS date_uploaded TIMESTAMP DEFAULT NOW();
+ALTER TABLE bridal_app.pages ADD COLUMN IF NOT EXISTS date_edited TIMESTAMP;
+
 
 
 ALTER TABLE bridal_app.users ALTER COLUMN role_type SET DEFAULT 'users';
@@ -37,22 +41,3 @@ ALTER TABLE bridal_app.users ALTER COLUMN last_login SET DATA TYPE TIMESTAMP;
 ALTER TABLE bridal_app.users ALTER COLUMN username SET NOT NULL;
 ALTER TABLE bridal_app.users ALTER COLUMN password SET NOT NULL;
 
--- CREATE TABLE posts (
---   pid SERIAL PRIMARY KEY,
---   title VARCHAR(255),
---   body VARCHAR,
---   user_id INT REFERENCES users(uid),
---   author VARCHAR REFERENCES users(username),
---   date_created TIMESTAMP
---   like_user_id INT[] DEFAULT ARRAY[]::INT[],
---   likes INT DEFAULT 0
--- );
-
--- CREATE TABLE comments (
---   cid SERIAL PRIMARY KEY,
---   comment VARCHAR(255),
---   author VARCHAR REFERENCES users(username),
---   user_id INT REFERENCES users(uid),
---   post_id INT REFERENCES posts(pid),
---   date_created TIMESTAMP
--- );

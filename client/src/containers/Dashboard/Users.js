@@ -35,7 +35,6 @@ export default function User({ users }) {
         </thead>
         <tbody>
           {users !== undefined && users.map((user, i) => {
-						console.log('mapped user', user)
             return (
               <tr key={user.id}>
                 <td>{i+1}</td>
