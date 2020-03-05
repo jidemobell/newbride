@@ -1,5 +1,6 @@
 export const SET_USER = 'SET_USER'
 export const RESET_USER = 'RESET_USER'
+export const LIST_USERS = 'LIST_USERS'
 export const AUTH_USER = 'AUTH_USER'
 
 export const SET_ERROR = 'SET_ERROR'

@@ -1,14 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
+export default function Images({ imageGallery }) {
+  const uploadInput = useRef(null);
+  const [, setUploadedImage] = useState();
 
-
-
-export default function Images({imageGallery}) {
-	const uploadInput = useRef(null);	
-	const [,setUploadedImage] = useState()
-
-
-	const onButtonClick = () => uploadInput.current.click();
+  const onButtonClick = () => uploadInput.current.click();
   const handleUpload = e => {
     e.preventDefault();
     let imgObject = new FormData();
@@ -17,7 +13,7 @@ export default function Images({imageGallery}) {
     imgObject.append("imageData", e.target.files[0]);
 
     setUploadedImage(URL.createObjectURL(e.target.files[0]));
-	};
+  };
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>
@@ -46,26 +42,22 @@ export default function Images({imageGallery}) {
           className="gallery"
           style={{ overflow: "scroll", padding: "10px" }}
         >
-          {
-						(imageGallery.map((image) => {
-							return (
-								<img 
-									src={`http://localhost:5000/${image.image_url}`} 
-									alt="uploading" 
-									style={{ width: "120px", height: "120px", margin: "5px" }} 
-									key={image.id} 
-								/> 
-							)            
-						}))
-					}
-					{/* <img src={uploadedImage} 5. alt="uploading" style={{ width: "200px" }} /> */}
+          {imageGallery.map(image => {
+            return (
+              <img
+                src={`http://localhost:5000/${image.image_url}`}
+                alt="uploading"
+                style={{ width: "120px", height: "120px", margin: "5px" }}
+                key={image.id}
+              />
+            );
+          })}
         </div>
-        {/* <button className="theme-button" type="file">UPLOAD</button> */}
         <div className="upload-wrapper flex-col center">
           <input
             type="file"
-						name="file"
-						// accept="image/*"
+            name="file"
+            // accept="image/*"
             // style={{ display: "hidden" }}
             onChange={handleUpload}
             ref={uploadInput}

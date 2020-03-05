@@ -1,5 +1,4 @@
-import React, {useEffect} from "react";
-// import { createBrowserHistory } from 'history'
+import React, {useEffect} from "react"
 import { useSelector, useDispatch } from 'react-redux'
 
 import ProtectedRoute from "./components/Resusable/ProtectedRoute";
@@ -11,27 +10,20 @@ import Login from './containers/Login'
 import Dashboard from './containers/Dashboard/Dashboard'
 import {getUser} from './redux/actions/user'
 
-// import {StateContext} from './store/index'
 
 import {
-	// BrowserRouter,
   Switch,
 	Route,
-	// Router,
 	BrowserRouter,
-	Redirect,
-	// Redirect
+	Redirect
 } from "react-router-dom";
 
-
-// export const history = createBrowserHistory()
 
 export default function Main() {
 	const isAuthenticated = useSelector(state => state.auth.authenticated)
 	const stateUser = useSelector(state => state.users.user)
 	const dispatch = useDispatch()
 	stateUser !== null || stateUser !== undefined &&  console.log("is it authenticated", stateUser.username)
-	// stateUser !== null && console.log("is it authenticated", stateUser['username'])
 
   useEffect(() => {
 		 dispatch(getUser())

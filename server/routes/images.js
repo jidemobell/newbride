@@ -26,7 +26,6 @@ router.post('/uploadmutler', upload.single('imageData'), (req, res, next) => {
 
 		pool.query(query)
 		.then((result) => {
-			console.log(result)
 			res.status(200).send(result)
 		})
 		.catch((err) => console.log(err))
@@ -40,7 +39,6 @@ router.get('/fetchimages', (req, res) => {
 
 	pool.query(query)
 	.then((result) => {
-		console.log(result)
 		res.status(200).send(result.rows)
 	})
 	.catch((err) => console.log(err))

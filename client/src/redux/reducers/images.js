@@ -1,4 +1,4 @@
-// import axios from 'axios'
+
 import * as actionTypes from '../constants'
 
 const { UPLOAD, FETCHIMG, SET_ERROR } = actionTypes
