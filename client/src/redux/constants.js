@@ -15,3 +15,6 @@ export const FETCHIMG = 'FETCHIMG'
 
 export const GET_PAGE = 'GET_PAGE'
 export const LIST_PAGES = 'LIST_PAGES'
+
+export const PULL_PHOTOS = 'PULL_PHOTOS' 
+export const LIST_PHOTOS = 'LIST_PHOTOS'  

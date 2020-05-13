@@ -9,6 +9,7 @@ import Images from "./images";
 import Tabs from "../../components/Dashboard/tabs";
 import Header from "../../containers/Headers/AdminHeader";
 import { fetchImages } from "../../redux/actions/images";
+import {listCloudinaryPhotos } from "../../redux/actions/photos";
 import {listPages } from '../../redux/actions/page';
 import { SET_ERROR, LIST_USERS } from "../../redux/constants";
 
@@ -16,11 +17,13 @@ export default function AdminDashboard() {
   const [viewData, setViewData] = useState("users");
   const dispatch = useDispatch();
   const { username } = Object(useSelector(state => state.users.user));
-  const imgArray = useSelector(state => state.image.images);
+  // const imgArray = useSelector(state => state.image.images);
+	const cloudinaryArray = useSelector(state => state.photos.photos);
+	const [cloudPhotos] = useState(cloudinaryArray)
 	const allUsers = useSelector(state => state.users.users);
 	const pages = useSelector(state => state.page.pages)
 
-	console.log("my pages", pages)
+	// console.log("my pages", pages)
 
   useEffect(() => dispatch(fetchImages()), [dispatch]);
   useEffect(() => {
@@ -45,6 +48,9 @@ export default function AdminDashboard() {
     })();
 	}, [dispatch]);
 	useEffect(() => dispatch(listPages()), [dispatch])
+	useEffect(() => dispatch(listCloudinaryPhotos()), [dispatch, cloudPhotos])
+
+	console.log('arrays',cloudinaryArray)
 
   return (
     <div className="App flex-col">
@@ -60,7 +66,9 @@ export default function AdminDashboard() {
           ) : viewData === "pages" ? (
             <Pages pages={pages} />
           ) : (
-            <Images imageGallery={imgArray} />
+						<Images 
+							imageGallery={cloudinaryArray} 
+						/>
           )}
         </div>
       </div>

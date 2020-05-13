@@ -8,27 +8,25 @@ export const uploadAction = (imgObject) => {
     axios
 		.post("/image/uploadmutler", imgObject)
 		.then(response => {
-			console.log("back response", response)
+			// console.log("back response", response)
 			if (response.status === 200) {
-				console.log("upload done");	
-				fetchImages()
-				// return {
-				// 	type: UPLOAD,
-				// 	payload: {
-				// 		success: true
-				// 	}
-				// }
+				console.log("upload done", response.data);	
+				// fetchImages()
+				dispatch ({
+					type: UPLOAD,
+					payload: {
+						success: true
+					}
+				})
 			}
 		})
-		// .then(() => fetchImages())
 		.catch(error => {
-			console.log(error.stack);
-			return {
+			dispatch ({
 				type: SET_ERROR,
 				payload: {
 					error
 				}
-			}
+			})
 		});
 	}
 };

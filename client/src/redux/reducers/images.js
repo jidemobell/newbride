@@ -3,7 +3,7 @@ import * as actionTypes from '../constants'
 
 const { UPLOAD, FETCHIMG, SET_ERROR } = actionTypes
 
-export const   imageReducer = (state ={}, action) => {
+export const imageReducer = (state ={}, action) => {
    switch (action.type) {
 		 case UPLOAD:
 			 return { ...state, uploadSuccess: action.payload.success }

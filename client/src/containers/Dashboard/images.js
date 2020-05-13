@@ -1,60 +1,60 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import {  useSelector, useDispatch } from "react-redux";
+
+import Gallery from "../Photos/Gallery";
+import { pullImages, listCloudinaryPhotos } from "../../redux/actions/photos";
+// import Lazyload from "react-lazyload";
+// import Spinner from "../../components/Spinner";
+
+console.log(process.env)
 
 export default function Images({ imageGallery }) {
-  const uploadInput = useRef(null);
-  const [, setUploadedImage] = useState();
+	const newStateGallery = useSelector(state => state.photos.photos)
+	const [data, setData] = useState(imageGallery)
+	
+  const dispatch = useDispatch()
+  // const [uploading, setUploading] = useState(false);
 
-  const onButtonClick = () => uploadInput.current.click();
-  const handleUpload = e => {
-    e.preventDefault();
-    let imgObject = new FormData();
+  // const handleUpload = e => {
+  //   e.preventDefault();
+  //   // setUploading(true);
+  //   let imgObject = new FormData();
+  //   imgObject.append("imageName", `mutler-image-${Date.now()}`);
+  //   imgObject.append("imageData", e.target.files[0]);
+  //   // setUploadedImage(URL.createObjectURL(e.target.files[0]))
+  //   uploadAction(imgObject);
+  //   (() => uploadStatus ? uploadTriggered : setUploadStatus(false))()
+	// };
 
-    imgObject.append("imageName", `mutler-image-${Date.now()}`);
-    imgObject.append("imageData", e.target.files[0]);
+  let widgetWindow = window.cloudinary.createUploadWidget(
+    {
+      cloudName: process.env.REACT_APP_CLOUDINARY_CLOUDNAME,
+      uploadPreset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+      theme: "white",
+    },
+    (err, result) => {
+      if (!err && result && result.event === "success") {
+        console.log("Done");
+        dispatch(pullImages());
+      }
+    }
+  );
 
-    setUploadedImage(URL.createObjectURL(e.target.files[0]));
-  };
+  const handleUpload = () => {
+    let windowFeatures = `width=500,height=600,left=200,top=200`;
+    widgetWindow.open(``, ``, windowFeatures);
+	};
+	
+	useEffect(() => dispatch(listCloudinaryPhotos()), [dispatch])
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>
-      <div className="tabs is-boxed">
-        <ul>
-          <li className="is-active">
-            <a href="http://fake">
-              <span className="icon is-small">
-                <i className="fas fa-image" aria-hidden="true"></i>
-              </span>
-              <span>Add Image</span>
-            </a>
-          </li>
-          <li>
-            <a href="http://fake">
-              <span className="icon is-small">
-                <i className="fas fa-music" aria-hidden="true"></i>
-              </span>
-              <span style={{ fontSize: "20px", fontWeight: "bolder" }}>+</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <section className="flex-col center">
-        <div
-          className="gallery"
-          style={{ overflow: "scroll", padding: "10px" }}
-        >
-          {imageGallery.map(image => {
-            return (
-              <img
-                src={`http://localhost:5000/${image.image_url}`}
-                alt="uploading"
-                style={{ width: "120px", height: "120px", margin: "5px" }}
-                key={image.id}
-              />
-            );
-          })}
+      <section className="flex-col">
+        <div>
+          <Gallery data={data} />
         </div>
         <div className="upload-wrapper flex-col center">
-          <input
+          {/* <input
             type="file"
             name="file"
             // accept="image/*"
@@ -62,11 +62,11 @@ export default function Images({ imageGallery }) {
             onChange={handleUpload}
             ref={uploadInput}
             className="upload-btn"
-          />
+          /> */}
           <button
             id="btn"
             className="theme-button upload-button"
-            onClick={onButtonClick}
+            onClick={handleUpload}
           >
             UPLOAD IMAGE
           </button>

@@ -19,6 +19,14 @@ CREATE TABLE IF NOT EXISTS bridal_app.pages (
 	image_ids JSONB[]
 );
 
+CREATE TABLE IF NOT EXISTS bridal_app.cloudinary (
+  id SERIAL PRIMARY KEY,
+  public_id TEXT UNIQUE NOT NULL,
+	url TEXT  NOT NULL,
+	uploaded_at TEXT,
+	inserted_at TIMESTAMP
+);
+
 
 ALTER TABLE bridal_app.users ADD COLUMN IF NOT EXISTS role_type TEXT;
 ALTER TABLE bridal_app.images ADD COLUMN IF NOT EXISTS page_ids JSONB[];
@@ -40,4 +48,7 @@ ALTER TABLE bridal_app.users ALTER COLUMN last_login SET DATA TYPE TIMESTAMP;
 
 ALTER TABLE bridal_app.users ALTER COLUMN username SET NOT NULL;
 ALTER TABLE bridal_app.users ALTER COLUMN password SET NOT NULL;
+
+
+ALTER TABLE bridal_app.cloudinary ALTER COLUMN inserted_at SET DEFAULT NOW();
 

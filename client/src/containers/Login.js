@@ -52,6 +52,7 @@ function Login() {
 								defaultValue={username}
 								required
 								minLength={4}
+								autoFocus
 							/>
 							<input 
 								type="password" 
