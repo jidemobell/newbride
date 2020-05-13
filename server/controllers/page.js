@@ -2,7 +2,7 @@ const Database = require('../db/index')
 
 const pool = new Database().startPool()
 
-
+//get a user page
 const getPage = (req, res) => {
   let query = {
 		text: `SELECT * from bridal_app.pages WHERE id=$1`,
@@ -17,7 +17,7 @@ const getPage = (req, res) => {
 	.catch(err => res.status(500).json({ error: err.stack }))
 }
 
-
+//list all pages
 const listPages = (req, res) => {
 	let query = {
 		text: `SELECT * from bridal_app.pages`,

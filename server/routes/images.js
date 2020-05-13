@@ -13,12 +13,14 @@ const { upload } = require("../controllers/images");
 const Database = require("../db/index");
 const pool = new Database().startPool();
 
+//configure cloudinary, move to a service later
 cloudinary.config({
   cloud_name: CLOUDINARY_CLOUDNAME,
   api_key: CLOUDINARY_API_KEY,
   api_secret: CLOUDINARY_API_SECRET,
 });
 
+//mutler image upload route
 router.post("/uploadmutler", upload.single("imageData"), (req, res, next) => {
   console.log("loading....");
   const { imageName } = req.body;
@@ -35,6 +37,7 @@ router.post("/uploadmutler", upload.single("imageData"), (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
+//fetch all uploaded images
 router.get("/fetchimages", (req, res) => {
   let query = {
     text: `select * from bridal_app.images`,
@@ -48,6 +51,10 @@ router.get("/fetchimages", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+
+//fetch updated uploaded files json details from
+//clodinary just after uploading image using clodinary
+//upload widget from front end
 router.get("/getcloudinaryphotos", (req, res) => {
   cloudinary.v2.api.resources(
     {
@@ -78,6 +85,8 @@ router.get("/getcloudinaryphotos", (req, res) => {
   );
 });
 
+
+//list all cloudinary image details 
 router.get("/listcloudinaryphotos", (req, res) => {
   let query = {
     text: `select * from bridal_app.cloudinary`,
