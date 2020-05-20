@@ -1,6 +1,16 @@
-import React from "react";
+import React,{useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux'
 
-export default function Page({ pages }) {
+import {listPages} from '../../redux/actions/page'
+
+export default function Page() {
+  const dispatch = useDispatch()
+	const pages = useSelector(state => state.page.pages)
+
+  useEffect(() => {
+		dispatch(listPages())
+ }, [])
+
   return (
     <section className="users" style={{ marginTop: "30px" }}>
       <div className="tabs is-boxed">

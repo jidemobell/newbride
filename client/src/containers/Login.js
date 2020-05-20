@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import { login } from '../redux/actions/auth'
 import Footer from "../components/Footer";
 import logo from "./../images/only_M.svg";
+
+import {logout} from '../redux/actions/auth'
+import {flushUsers} from '../redux/actions/user'
 
 
 
@@ -10,6 +13,10 @@ function Login() {
 	const [username] = useState("")
 	const [password] = useState("")
 	const dispatch = useDispatch()
+
+  useEffect(() => dispatch(logout()), [dispatch])
+  // useEffect(() => dispatch(flushUsers()), [dispatch])
+
   return (
     <div className="App flex-col">
       <div className="top flex-col center">
@@ -39,8 +46,9 @@ function Login() {
 									})).filter(element => {
 										 return element.id !== "" &&  (userData[element.id] = element.value)
 									})
-								   dispatch(login(userData))
-									e.target.reset()
+									 dispatch(login(userData))
+									 
+									// e.target.reset()
 								}
 							}
             >

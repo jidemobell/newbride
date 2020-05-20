@@ -2,6 +2,8 @@ export const SET_USER = 'SET_USER'
 export const RESET_USER = 'RESET_USER'
 export const LIST_USERS = 'LIST_USERS'
 export const AUTH_USER = 'AUTH_USER'
+export const LOG_OUT = 'LOG_OUT'
+export const FLUSH_USERS = 'FLUSH_USERS'
 
 export const SET_ERROR = 'SET_ERROR'
 export const RESET_ERROR = 'RESET_ERROR'

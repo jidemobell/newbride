@@ -1,6 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function User({ users }) {
+import {listUsers, flushUsers} from '../../redux/actions/user'
+
+export default function User() {
+	const dispatch = useDispatch()
+	const users = useSelector(state => state.users.users)
+
+  useEffect(() => {
+		dispatch(listUsers())
+
+		return () => {
+			dispatch(flushUsers())
+		}
+ }, [dispatch])
+
   return (
     <section className="users" style={{ marginTop: "30px" }}>
       <div className="tabs is-boxed">

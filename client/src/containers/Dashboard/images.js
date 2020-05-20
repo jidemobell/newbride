@@ -8,11 +8,15 @@ import { pullImages, listCloudinaryPhotos } from "../../redux/actions/photos";
 
 console.log(process.env)
 
-export default function Images({ imageGallery }) {
-	const newStateGallery = useSelector(state => state.photos.photos)
-	const [data, setData] = useState(imageGallery)
+export default function Images( ) {
+	// const newStateGallery = useSelector(state => state.photos.photos)
 	
-  const dispatch = useDispatch()
+	const cloudinaryArray = useSelector(state => state.photos.photos);
+
+	// const [data, setData] = useState(imageGallery)
+	
+	const dispatch = useDispatch()
+	// console.log('gallery', imageGallery)
   // const [uploading, setUploading] = useState(false);
 
   // const handleUpload = e => {
@@ -33,9 +37,10 @@ export default function Images({ imageGallery }) {
       theme: "white",
     },
     (err, result) => {
-      if (!err && result && result.event === "success") {
-        console.log("Done");
-        dispatch(pullImages());
+      if (!err && result && result.event === "success") {  
+				dispatch(pullImages());
+				setInterval(dispatch(listCloudinaryPhotos), 2000)
+				console.log(result.info);
       }
     }
   );
@@ -45,13 +50,13 @@ export default function Images({ imageGallery }) {
     widgetWindow.open(``, ``, windowFeatures);
 	};
 	
-	useEffect(() => dispatch(listCloudinaryPhotos()), [dispatch])
+	// useEffect(() => dispatch(listCloudinaryPhotos()), [dispatch])
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>
       <section className="flex-col">
         <div>
-          <Gallery data={data} />
+          <Gallery data={cloudinaryArray  == undefined ? [] : cloudinaryArray} />
         </div>
         <div className="upload-wrapper flex-col center">
           {/* <input

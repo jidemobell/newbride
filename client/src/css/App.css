@@ -273,6 +273,11 @@ input[type=password]{
 
 
 /* Admin Page */
+.header-list{
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
 .top-navs{
 	/* justify-content: space-evenly;
 	align-content: flex-start; */

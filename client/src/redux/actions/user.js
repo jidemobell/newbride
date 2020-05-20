@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LIST_USERS, SET_USER, SET_ERROR} from '../constants'
+import { LIST_USERS, SET_USER, SET_ERROR,  FLUSH_USERS} from '../constants'
 
 export function getUser() {
   return async dispatch => {
@@ -43,4 +43,13 @@ export function listUsers(){
     }
    }
 	}
+
+
+	export function flushUsers(){
+		return async dispatch => {
+				dispatch({
+					type: FLUSH_USERS,
+				})
+		 }
+		}
 
