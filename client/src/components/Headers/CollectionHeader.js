@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// import brand from "../../images/big_m.png";
+
 
 export default function CollectionHeader() {
   return (
     <header className="flex-row">
-      {/* <div>
-        <img src={brand} id="brand" alt="brand" />
-      </div> */}
       <section className="flex-col center" style={{ marginTop: "-10px" }}>
         <h1 className="flex-row sacramento">
           <hr style={{ width: "50px", marginTop: "40px" }} />

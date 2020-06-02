@@ -11,7 +11,7 @@ export function login(data) {
         username: data.username,
         password: data.password,
       });
-      if (response.status == 200) {
+      if (response.status === 200) {
         dispatch({
           type: AUTH_USER,
           payload: {

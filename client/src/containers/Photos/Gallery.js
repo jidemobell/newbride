@@ -14,7 +14,7 @@ export default function Gallery({ data }) {
             <span className="closer">X</span>
             <img
               src={photo.url}
-              alt={`photo-${photo.id}`}
+              alt={``}
               key={photo.public_id}
               className="gallery-image"
             />

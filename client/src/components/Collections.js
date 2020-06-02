@@ -29,7 +29,6 @@ export default function Collection() {
   return (
     <div className="App flex-col">
       <div className="top flex-col">
-        {/* <CollectionHeader /> */}
 				<Header />
         <section
           style={{ padding: "10px 40px", flexWrap: "wrap", boxSizing: "content-box" }}

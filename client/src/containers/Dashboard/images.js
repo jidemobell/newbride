@@ -5,7 +5,7 @@ import Gallery from "../Photos/Gallery";
 import { pullImages, listCloudinaryPhotos } from "../../redux/actions/photos";
 
 
-console.log(process.env)
+
 
 export default function Images( ) {
 	const cloudinaryArray = useSelector(state => state.photos.photos);
@@ -37,18 +37,9 @@ export default function Images( ) {
     <section className="users" style={{ marginTop: "30px" }}>
       <section className="flex-col">
         <div>
-          <Gallery data={cloudinaryArray  == undefined ? [] : cloudinaryArray} />
+          <Gallery data={cloudinaryArray  === undefined ? [] : cloudinaryArray} />
         </div>
         <div className="upload-wrapper flex-col center">
-          {/* <input
-            type="file"
-            name="file"
-            // accept="image/*"
-            // style={{ display: "hidden" }}
-            onChange={handleUpload}
-            ref={uploadInput}
-            className="upload-btn"
-          /> */}
           <button
             id="btn"
             className="theme-button upload-button"

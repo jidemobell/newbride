@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from 'react-redux'
 
 import brand from "../../images/big_m.png";
-import history from '../../redux/store/history'
 import {logout} from '../../redux/actions/auth'
 
 export default function Header({user}) {

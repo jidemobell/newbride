@@ -9,7 +9,7 @@ export default function Page() {
 
   useEffect(() => {
 		dispatch(listPages())
- }, [])
+ }, [dispatch])
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>
