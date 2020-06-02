@@ -4,8 +4,6 @@ import { login } from '../redux/actions/auth'
 import Footer from "../components/Footer";
 import logo from "./../images/only_M.svg";
 
-import {logout} from '../redux/actions/auth'
-import {flushUsers} from '../redux/actions/user'
 
 
 
@@ -14,8 +12,6 @@ function Login() {
 	const [password] = useState("")
 	const dispatch = useDispatch()
 
-  useEffect(() => dispatch(logout()), [dispatch])
-  // useEffect(() => dispatch(flushUsers()), [dispatch])
 
   return (
     <div className="App flex-col">

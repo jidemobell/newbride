@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {listUsers, flushUsers} from '../../redux/actions/user'
+import {listUsers} from '../../redux/actions/user'
 
 export default function User() {
 	const dispatch = useDispatch()
@@ -9,10 +9,6 @@ export default function User() {
 
   useEffect(() => {
 		dispatch(listUsers())
-
-		return () => {
-			dispatch(flushUsers())
-		}
  }, [dispatch])
 
   return (

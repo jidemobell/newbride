@@ -27,6 +27,7 @@ export  function getPage(id){
 export  function listPages(){
 	return async dispatch => {
 		let token = localStorage.getItem("token");
+		console.log('the token at pages', token)
 		try {
 			let response = await axios.post(`/page/list`,
 			{ headers: { Authorization: `Bearer ${token}` } }

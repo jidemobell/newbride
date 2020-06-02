@@ -9,8 +9,8 @@ import configureStore from './redux/store/store'
 import axios from "axios";
 import "bulma/css/bulma.css";
 import "./css/hover.css";
-import "./css/App.css";
 import "./css/index.css";
+import "./css/App.css";
 import Main from "./Main";
 import * as serviceWorker from "./serviceWorker";
 
@@ -18,11 +18,11 @@ const store= configureStore()
 
 //global axios defaults
 axios.defaults.headers.common["Content-Type"] = "application/json";
-axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL
-axios.defaults.timeout = process.env.REACT_APP_REQUEST_TIMEOUT
+axios.defaults.baseURL = "http://localhost:5000";
 
 
-const renderApp = () => {
+
+const render = () => {
   ReactDOM.render(
     <Provider store={store}>
       <Main />
@@ -31,17 +31,10 @@ const renderApp = () => {
   )
 }
 
-
-const renderSpinner = () => {
-  ReactDOM.render(
-    <></>
-  )
-}
-
-renderApp()
+render()
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept(Main, renderApp)
+  module.hot.accept(Main, render)
 }
 
 

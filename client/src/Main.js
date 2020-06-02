@@ -1,7 +1,7 @@
 import React, {useEffect} from "react"
 import { useSelector, useDispatch } from 'react-redux'
 
-import AuthRoute from "./components/Resusable/AuthRoute";
+import AuthRoute from "./components/Resusable/ProtectedRoute";
 import Home from './containers/Home';
 import Collections from './components/Collections'
 import Contact from './containers/Contact'
@@ -23,7 +23,7 @@ import history from './redux/store/history'
 
 
 export default function Main() {
-	const isAuthenticated = useSelector(state => state.auth.authenticated)
+	const authenticated = useSelector(state => state.auth.authenticated)
 	// const stateUser = useSelector(state => state.users.user)
 	const dispatch = useDispatch()
 	// stateUser !== null || stateUser !== undefined &&  console.log("is it authenticated", stateUser.username)
@@ -34,7 +34,7 @@ export default function Main() {
 	// 	 dispatch(getUser())
 	// }, [isAuthenticated, dispatch])\
 
-	console.log('athState', isAuthenticated)
+	console.log('athState', authenticated)
 
   return (
     <Router history={history}>
@@ -45,7 +45,7 @@ export default function Main() {
         <Route path="/about" component={About} />
 				<Route path="/users/dashboard">
 					{
-						isAuthenticated ? <Dashboard   /> : <Login />
+						authenticated ? <Dashboard   /> : <Login />
 					}
 				</Route>
 				<Route path="/v1/login" component={Login} />

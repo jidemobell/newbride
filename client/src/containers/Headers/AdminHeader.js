@@ -3,13 +3,12 @@ import { useDispatch } from 'react-redux'
 
 import brand from "../../images/big_m.png";
 import history from '../../redux/store/history'
-// import {logout} from '../../redux/actions/auth'
+import {logout} from '../../redux/actions/auth'
 
 export default function Header({user}) {
 	const disptach = useDispatch()
   const logOut = () => {
-		// disptach
-		history.push('/v1/login')
+		disptach(logout())
 	}
 
   return (

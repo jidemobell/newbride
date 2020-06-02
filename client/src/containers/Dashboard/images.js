@@ -1,35 +1,17 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import {  useSelector, useDispatch } from "react-redux";
 
 import Gallery from "../Photos/Gallery";
 import { pullImages, listCloudinaryPhotos } from "../../redux/actions/photos";
-// import Lazyload from "react-lazyload";
-// import Spinner from "../../components/Spinner";
+
 
 console.log(process.env)
 
 export default function Images( ) {
-	// const newStateGallery = useSelector(state => state.photos.photos)
-	
 	const cloudinaryArray = useSelector(state => state.photos.photos);
 
-	// const [data, setData] = useState(imageGallery)
 	
 	const dispatch = useDispatch()
-	// console.log('gallery', imageGallery)
-  // const [uploading, setUploading] = useState(false);
-
-  // const handleUpload = e => {
-  //   e.preventDefault();
-  //   // setUploading(true);
-  //   let imgObject = new FormData();
-  //   imgObject.append("imageName", `mutler-image-${Date.now()}`);
-  //   imgObject.append("imageData", e.target.files[0]);
-  //   // setUploadedImage(URL.createObjectURL(e.target.files[0]))
-  //   uploadAction(imgObject);
-  //   (() => uploadStatus ? uploadTriggered : setUploadStatus(false))()
-	// };
-
   let widgetWindow = window.cloudinary.createUploadWidget(
     {
       cloudName: process.env.REACT_APP_CLOUDINARY_CLOUDNAME,
@@ -50,7 +32,6 @@ export default function Images( ) {
     widgetWindow.open(``, ``, windowFeatures);
 	};
 	
-	// useEffect(() => dispatch(listCloudinaryPhotos()), [dispatch])
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>

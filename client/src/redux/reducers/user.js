@@ -12,7 +12,6 @@ export const  userReducer = (state ={}, action) => {
 		 case FLUSH_USERS:
 			 return { ...state, users: [] }
 	   case SET_ERROR:
-			 localStorage.removeItem("token")
 		   return { ...state }
 			default:
 				return state

@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router() 
+const { passport } = require('../services/passport')
 
 const { body, validationResult } = require('express-validator')
 const { login, registerAdmin, adminLogin } = require('../controllers/auth')
 
-
+const loginAuth = passport.authenticate('local', {session: false})
 
 
 
@@ -20,7 +21,7 @@ const loginValidationCheck = [
 ]
 
 
-router.post('/login',loginValidationCheck, (req, res) => {
+router.post('/login', loginValidationCheck, loginAuth,  (req, res) => {
 	const {username} = req.body
 	const errors = validationResult(req)
 	if(!errors.isEmpty()) {

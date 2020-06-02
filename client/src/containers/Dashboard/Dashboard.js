@@ -10,16 +10,14 @@ import Header from "../../containers/Headers/AdminHeader";
 import { getUser, flushUsers } from "../../redux/actions/user";
 
 export default function Dashboard() {
+  console.log('loading......')
   const [viewData, setViewData] = useState("users");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const stateUser = Object(useSelector((state) => state.users.user));
   // const imgArray = useSelector(state => state.image.images);
 
   useEffect(() => {
 		dispatch(getUser());
-		return () => {
-			dispatch(flushUsers())
-		}
   }, [dispatch]);
 
   return (

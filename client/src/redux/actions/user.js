@@ -4,6 +4,7 @@ import { LIST_USERS, SET_USER, SET_ERROR,  FLUSH_USERS} from '../constants'
 export function getUser() {
   return async dispatch => {
 		let token = localStorage.getItem("token");
+		console.log('token at get user', token);
     try {
       let response = await axios.get(`/users/dashboard`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -27,6 +28,7 @@ export function getUser() {
 export function listUsers(){
 	return async dispatch => {
 		let token = localStorage.getItem("token");
+		console.log('the token:', token)
 		try {
       let response = await axios.get(`/users/list`, { headers: { Authorization: `Bearer ${token}` }});
       dispatch({

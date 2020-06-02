@@ -10,8 +10,8 @@ const router = express.Router();
 const cloudinary = require("cloudinary");
 
 const { upload } = require("../controllers/images");
-const Database = require("../db/index");
-const pool = new Database().startPool();
+const Database = require("../db/index.js");
+const pool = Database.startPool();
 
 //configure cloudinary, move to a service later
 cloudinary.config({
@@ -26,7 +26,7 @@ router.post("/uploadmutler", upload.single("imageData"), (req, res, next) => {
   const { imageName } = req.body;
   const { path } = req.file;
   let query = {
-    text: `INSERT INTO bridal_app.images (name,image_url) VALUES ($1, $2)`,
+    text: `INSERT INTO app.images (name,image_url) VALUES ($1, $2)`,
     values: [imageName, path],
   };
   pool
@@ -40,7 +40,7 @@ router.post("/uploadmutler", upload.single("imageData"), (req, res, next) => {
 //fetch all uploaded images
 router.get("/fetchimages", (req, res) => {
   let query = {
-    text: `select * from bridal_app.images`,
+    text: `select * from app.images`,
   };
 
   pool
@@ -68,7 +68,7 @@ router.get("/getcloudinaryphotos", (req, res) => {
         for (let [i, photo] of data.entries()) {
           const { public_id, url, created_at } = photo;
           let query = {
-            text: `INSERT INTO bridal_app.cloudinary (public_id, url, uploaded_at) VALUES ($1, $2, $3) ON CONFLICT ON CONSTRAINT cloudinary_public_id_key DO NOTHING;`,
+            text: `INSERT INTO app.cloudinary (public_id, url, uploaded_at) VALUES ($1, $2, $3) ON CONFLICT ON CONSTRAINT cloudinary_public_id_key DO NOTHING;`,
             values: [public_id, url, created_at],
           };
           pool
@@ -89,7 +89,7 @@ router.get("/getcloudinaryphotos", (req, res) => {
 //list all cloudinary image details 
 router.get("/listcloudinaryphotos", (req, res) => {
   let query = {
-    text: `select * from bridal_app.cloudinary`,
+    text: `select * from app.cloudinary`,
   };
 
   pool

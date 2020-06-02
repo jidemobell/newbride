@@ -4,7 +4,7 @@ CREATE USER "app-user" WITH PASSWORD 'password';
 CREATE ROLE
 CREATE DATABASE "bridal" WITH OWNER "admin";
 CREATE DATABASE
-\c "test-database"
+\c "bridal"
 -- You are now connected to database "test-database" as user "postgres".
 DROP SCHEMA "public";
 DROP SCHEMA
@@ -16,7 +16,7 @@ CREATE SCHEMA
 
 /* create the database */
 \c postgres postgres
-CREATE DATABASE test_database WITH OWNER app_admin;
+CREATE DATABASE bridal WITH OWNER app_admin;
 \c test_database postgres
 
 /* drop public schema; other, less invasive option is to
@@ -36,9 +36,12 @@ ALTER DEFAULT PRIVILEGES FOR ROLE app_admin
 /* assuming that app_user should be allowed to do anything
    with data in all tables in that schema, allow access for all
    objects that app_admin will create there */
-ALTER DEFAULT PRIVILEGES FOR ROLE app_admin IN SCHEMA app
+ALTER DEFAULT PRIVILEGES FOR ROLE admin IN SCHEMA app
    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO app_user;
 ALTER DEFAULT PRIVILEGES FOR ROLE app_admin IN SCHEMA app
    GRANT SELECT, USAGE ON SEQUENCES TO app_user;
 ALTER DEFAULT PRIVILEGES FOR ROLE app_admin IN SCHEMA app
    GRANT EXECUTE ON FUNCTIONS TO app_user;
+
+/*Install required exetension in schema*/
+CREATE EXTENSION pg_crypto WITH SCHEMA app

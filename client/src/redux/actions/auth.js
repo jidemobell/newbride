@@ -1,7 +1,8 @@
 import axios from "axios";
 import { AUTH_USER, SET_ERROR, LOG_OUT } from "../constants";
+import history from '../store/history'
 
-import history from "../store/history";
+
 
 export function login(data) {
   return async (dispatch) => {
@@ -18,8 +19,9 @@ export function login(data) {
             authenticated: true,
           },
 				});
-				history.push('/users/dashboard')
-      }
+			}
+			localStorage.setItem("token", response.data.token );
+			history.push('/users/dashboard')
     } catch (error) {
       console.log(error);
       dispatch({

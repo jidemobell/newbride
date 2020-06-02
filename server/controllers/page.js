@@ -1,11 +1,11 @@
-const Database = require('../db/index')
+const Database = require('../db/index.js')
 
-const pool = new Database().startPool()
+const pool = Database.startPool()
 
 //get a user page
 const getPage = (req, res) => {
   let query = {
-		text: `SELECT * from bridal_app.pages WHERE id=$1`,
+		text: `SELECT * from app.pages WHERE id=$1`,
 		values:  [req.param.id]
 	}
 
@@ -19,14 +19,10 @@ const getPage = (req, res) => {
 
 //list all pages
 const listPages = (req, res) => {
-	let query = {
-		text: `SELECT * from bridal_app.pages`,
-	}
-
-	pool.query(query)
+	let query = { text: `SELECT * from app.pages` }	
+  pool.query(query)
 	.then(result => {
 		const pages = result.rows
-		console.log('all the pages', pages)
 		res.status(200).json(pages)
 	})
 	.catch(err => res.status(500).json({ error: err.stack }))

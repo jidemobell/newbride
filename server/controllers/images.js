@@ -32,23 +32,6 @@ const fileFilter = (req, file, callback) => {
 	}
 })
 
-//  const uploadImage = async(req, res) => {
-// 	console.log(req.body)
-// 		const { imageName } = req.body
-// 		const { imgData } = req.file.path  //inspect
-		
-// 	query = {
-// 		text: `INSERT INTO bridal_app.images (name,image_url) VALUES ($1, $2)`,
-// 		values: [imageName, imgData]
-// 	}
-
-// 	try {
-// 		const result = await pool.query(query)
-// 		res.status(200).send(result.res)
-// 	} catch (error) {
-// 		 next(error)
-// 	}
-// }
 
 module.exports = {
 	upload,
