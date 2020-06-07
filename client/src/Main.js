@@ -30,7 +30,7 @@ export default function Main() {
         <PublicRoute path="/contact" component={Contact} />
         <PublicRoute path="/about" component={About} />
         <PublicRoute  path="/v1/login" component={Login} />
-        <PrivateRoute path="/users/dashboard" component={Dashboard} isAuthenticated={authenticated} redirectPath={"/v1/login"}/>
+        <PrivateRoute path="/users/dashboard" component={Dashboard} isAuthenticated={authenticated}  redirectPath={"/v1/login"}/>
       </Switch>
     </Router>
   );

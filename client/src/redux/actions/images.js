@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SET_ERROR, UPLOAD, FETCHIMG } from '../constants';
+import { SET_ERROR, UPLOAD, FETCHIMG } from '../actionConstants';
 
 
 

@@ -7,7 +7,7 @@ import { pullImages, listCloudinaryPhotos } from "../../redux/actions/photos";
 
 
 
-export default function Images( ) {
+export default function Images({token}) {
 	const cloudinaryArray = useSelector(state => state.photos.photos);
 
 	
@@ -20,9 +20,9 @@ export default function Images( ) {
     },
     (err, result) => {
       if (!err && result && result.event === "success") {  
-				dispatch(pullImages());
+				dispatch(pullImages(token));
 				setInterval(dispatch(listCloudinaryPhotos), 2000)
-				console.log(result.info);
+				// console.log(result.info);
       }
     }
   );

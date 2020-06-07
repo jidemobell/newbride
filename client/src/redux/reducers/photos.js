@@ -1,5 +1,5 @@
 
-import {PULL_PHOTOS, LIST_PHOTOS} from '../constants'
+import {PULL_PHOTOS, LIST_PHOTOS} from '../actionConstants'
 
 export const cloudinaryReducer = (state ={}, action) => {
    switch (action.type) {

@@ -1,9 +1,8 @@
 import axios from 'axios'
-import {GET_PAGE, LIST_PAGES} from '../constants'
+import {GET_PAGE, LIST_PAGES} from '../actionConstants'
 
-export  function getPage(id){
+export  function getPage(id, token){
 	return async dispatch => {
-		let token = localStorage.getItem("token");
 		try {
 			let response = await axios.post(`/pages?id=${id}`,
 			{ headers: { Authorization: `Bearer ${token}` } }
@@ -24,9 +23,8 @@ export  function getPage(id){
 	}
 }
 
-export  function listPages(){
+export  function listPages(token){
 	return async dispatch => {
-		let token = localStorage.getItem("token");
 		try {
 			let response = await axios.post(`/pages/list`,
 			{ headers: { Authorization: `Bearer ${token}` } }

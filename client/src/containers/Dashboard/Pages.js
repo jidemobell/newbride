@@ -3,17 +3,17 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import {listPages} from '../../redux/actions/page'
 
-export default function Page({toEdit}) {
+export default function Page({toEdit, token}) {
   const dispatch = useDispatch()
 	const pages = useSelector(state => state.page.pages)
 	const [pageList] = useState((pages !== undefined) ? pages : [])
-	// const [openEditor, setOpenEditor] = useState(false)
+	
 
 	const editAction = () => toEdit(true)
 	
   useEffect(() => {
-		dispatch(listPages())
- }, [dispatch])
+		dispatch(listPages(token))
+ }, [dispatch, token])
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>
@@ -52,13 +52,11 @@ export default function Page({toEdit}) {
               <tr key={page.id}>
                 <td>{i+1}</td>
                 <td>{page.page_name}</td>
-                {/* <td>{page.date_created}</td> */}
                 <td>
                   <span className="flex-row">
                     <button className="button" style={{ marginRight: "8px" }} onClick={editAction}>
                       edit
                     </button>
-                    {/* <button className="button">Delete</button> */}
                   </span>
                 </td>
               </tr>

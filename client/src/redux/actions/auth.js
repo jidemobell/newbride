@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, SET_ERROR, LOG_OUT } from "../constants";
+import { AUTH_USER, AUTH_ERROR } from "../actionConstants";
 import history from '../store/history'
 
 
@@ -10,8 +10,16 @@ export function login(data) {
       let response = await axios.post(`/v1/login`, {
         username: data.username,
         password: data.password,
-      });
-      if (response.status === 200) {
+			});
+			if(response.data.status === 401 || response.data.status !== 200){
+				dispatch({
+					type: AUTH_ERROR,
+					payload: {
+						error: 'username or password incorrect',
+						isAuthError: true
+					}
+				});
+			}
         dispatch({
           type: AUTH_USER,
           payload: {
@@ -19,14 +27,14 @@ export function login(data) {
             authenticated: true,
           },
 				});
-			}
-			localStorage.setItem("token", response.data.token );
 			history.push('/users/dashboard')
     } catch (error) {
-      console.log(error);
       dispatch({
-        type: SET_ERROR,
-        payload: error,
+        type: AUTH_ERROR,
+        payload: {
+					error: 'username or password incorrect',
+					isAuthError: true
+				}
       });
     }
   };
@@ -34,18 +42,14 @@ export function login(data) {
 
 
 
-
-
-export function startLogout(){
-	return (dispatch) => {
-		// you send request to the server 
-	}
-}
-
 export function logout(){
   return (dispatch) => {
     dispatch({
-			type: LOG_OUT
+			type: AUTH_USER,
+			payload: {
+				token: null,
+        authenticated: false,
+			}
 		})
 	}
 }

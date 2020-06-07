@@ -1,5 +1,5 @@
 // import axios from 'axios'
-import * as actionTypes from '../constants'
+import * as actionTypes from '../actionConstants'
 
 const { GET_PAGE, LIST_PAGES, SET_ERROR } = actionTypes
 

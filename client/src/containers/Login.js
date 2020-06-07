@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { login } from '../redux/actions/auth'
 import Footer from "../components/Footer";
 import logo from "./../images/only_M.svg";
@@ -11,6 +11,10 @@ function Login() {
 	const [username] = useState("")
 	const [password] = useState("")
 	const dispatch = useDispatch()
+	const authenticated = useSelector(state => state.auth.authenticated)
+  const authError = useSelector(state => state.auth.isAuthError)
+  const error = useSelector(state => state.auth.error)
+
 
 
   return (
@@ -43,8 +47,6 @@ function Login() {
 										 return element.id !== "" &&  (userData[element.id] = element.value)
 									})
 									 dispatch(login(userData))
-									 
-									// e.target.reset()
 								}
 							}
             >
@@ -67,9 +69,11 @@ function Login() {
 								minLength={8}
 								required
 							/>
-              {/* <input type="submit" value="SUBMIT" /> */}
               <button  className="theme-button" type="submit" >SUBMIT</button>
             </form>
+						{
+							authenticated === false  && <p>{ authError  ? error : ''}</p>
+						}
         </section>
       </div>
       <Footer />

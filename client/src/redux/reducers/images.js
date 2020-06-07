@@ -1,5 +1,5 @@
 
-import * as actionTypes from '../constants'
+import * as actionTypes from  "../actionConstants"
 
 const { UPLOAD, FETCHIMG, SET_ERROR } = actionTypes
 

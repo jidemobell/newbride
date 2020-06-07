@@ -1,6 +1,5 @@
-// import axios from 'axios'
-// import axios from 'axios'
-import * as actionTypes from '../constants'
+
+import * as actionTypes from '../actionConstants'
 
 const { SET_ERROR, RESET_ERROR } = actionTypes
 

@@ -2,32 +2,33 @@ require('dotenv').config()
 const { Pool } = require("pg");
 const { exec } = require("child_process");
 const fs = require('fs');
-const path = require('path');
-const { PGUSER, PGDATABASE, PGPASSWORD, PGPORT, PGHOST} = process.env
+
+const dbConstants = require('../constants/dbConstants');
+const appConstants = require('../constants/index');
 var child;
 
 
-// const scriptPath = path.basename('init.sql')
 
 
 
-child = exec("pg_isready", (err, stdout, stderr) => {
+
+child = exec(dbConstants.PG_READY_COMMAND, (err, stdout, stderr) => {
   if (err) {
     console.error({
 			error: `${err}`,
-			message: 'postgresql server is not accepting connections'
+			message: dbConstants.PG_READY_STATUS
 		});
     process.exit()
 	}
 
-	if(stderr) console.error(`stderr: ${stderr}`);
-	console.log(`stdout: ${stdout}`);
+	if(stderr) console.error(`${appConstants.STDERR}: ${stderr}`);
+	console.log(`${appConstants.STDOUT}: ${stdout}`);
 	
 	let newPool = Database.startPool()
-	Database.queryDb(`SELECT schema_name FROM information_schema.schemata WHERE schema_name = 'app'`, newPool)
+	Database.queryDb(dbConstants.PG_STARTDB_QUERY, newPool)
 	.then(result => {
-		console.log('Postgresql Connected ....')
-		console.log('verifying connection....')
+		console.log(dbConstants.PG_CONNECTED_MESSAGE)
+		console.log(dbConstants.PG_VERIF_MESSAGE)
 		if(result.rows[0].schema_name === 'app'){
 			Database.initializeScript(newPool)
 		}
@@ -42,23 +43,23 @@ child = exec("pg_isready", (err, stdout, stderr) => {
 class Database {
  static startPool() {
     let pool;
-    console.log("Creating postgreSQL connection...");
-    if (process.env.NODE_ENV === "production") {
+    console.log(dbConstants.PG_INIT_POOL_MESSAGE);
+    if (process.env.NODE_ENV === appConstants.PROD) {
       const connectionString = process.env.dbUri;
       pool = new Pool({
         connectionString: connectionString
       });
-    } else if (process.env.NODE_ENV === "test") {
+    } else if (process.env.NODE_ENV === appConstants.TEST) {
       this.db = "testDb";
       pool = new Pool();
-    } else if (process.env.NODE_ENV === "development"){
+    } else if (process.env.NODE_ENV === appConstants.DEV){
       pool = new Pool();
 		}
 		return pool
 	}
 	
 	static async queryDb(text, pool) {
-		console.log('....initializing with a query')
+		console.log(dbConstants.PG_INIT_DATA_MESSAGE)
 		try {
 			const res = await pool.query(text);
 			return res

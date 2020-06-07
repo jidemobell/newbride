@@ -1,5 +1,5 @@
 
-import { LOG_OUT, AUTH_USER, SET_ERROR } from "../constants";
+import { AUTH_USER, AUTH_ERROR } from "../actionConstants";
 
 
 export const authReducer = (state = {}, action) => {
@@ -7,13 +7,12 @@ export const authReducer = (state = {}, action) => {
     case AUTH_USER:
       return {
         ...state,
-        authenticated: action.payload.authenticated,
+				authenticated: action.payload.authenticated,
+				authToken: action.payload.token,
+				isAuthError: false
 			};
-		case LOG_OUT:
-			localStorage.removeItem('token')
-			return { ...state, authToken: null, authenticated: null }
-    case SET_ERROR:
-      return { ...state, authToken: null };
+    case AUTH_ERROR:
+      return { ...state, error: action.payload.error, isAuthError: true, authenticated: false, };
     default:
       return state;
   }

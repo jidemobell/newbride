@@ -1,10 +1,8 @@
 import axios from "axios";
-import { LIST_USERS, SET_USER, SET_ERROR,  FLUSH_USERS} from '../constants'
+import { LIST_USERS, SET_USER, SET_ERROR } from '../actionConstants'
 
-export function getUser() {
+export function getUser(token) {
   return async dispatch => {
-		let token = localStorage.getItem("token");
-		console.log('token at get user', token);
     try {
       let response = await axios.get(`/users/dashboard`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -25,10 +23,8 @@ export function getUser() {
 }
 
 
-export function listUsers(){
+export function listUsers(token){
 	return async dispatch => {
-		let token = localStorage.getItem("token");
-		console.log('the token:', token)
 		try {
       let response = await axios.get(`/users/list`, { headers: { Authorization: `Bearer ${token}` }});
       dispatch({
@@ -47,11 +43,5 @@ export function listUsers(){
 	}
 
 
-	export function flushUsers(){
-		return async dispatch => {
-				dispatch({
-					type: FLUSH_USERS,
-				})
-		 }
-		}
+
 

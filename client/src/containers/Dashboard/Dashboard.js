@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import Footer from "../../components/Footer";
 import Users from "./Users";
@@ -8,20 +8,21 @@ import Images from "./images";
 import Tabs from "../../components/Dashboard/tabs";
 import Header from "../../containers/Headers/AdminHeader";
 import Editor from "../../components/Editors/Editor";
-import { getUser } from "../../redux/actions/user";
+
 
 export default function Dashboard() {
-  console.log("loading......");
   const [viewData, setViewData] = useState("users");
   const [showEditor, setShowEditor] = useState(false);
-  const dispatch = useDispatch();
+	const token = useSelector(state => state.auth.authToken);
   const stateUser = Object(useSelector((state) => state.users.user));
+
+
 
   const editorOpener = (val) => setShowEditor(val);
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUser(token));
+  // }, [dispatch]);
 
   return (
     <div className="App flex-col">
@@ -39,11 +40,11 @@ export default function Dashboard() {
               style={{ background: "#F5F5F5", minHeight: "10vh" }}
             >
               {viewData === "users" ? (
-                <Users />
+                <Users token={token} />
               ) : viewData === "pages" ? (
-                <Pages toEdit={editorOpener} />
+                <Pages toEdit={editorOpener} token={token} />
               ) : (
-                <Images />
+                <Images token={token} />
               )}
             </div>
           </div>

@@ -1,11 +1,12 @@
 const Database = require('../db/index.js')
+const queries = require('../constants/queryConstants')
 
 const pool = Database.startPool()
 
 //get a user page
 const getPage = (req, res) => {
   let query = {
-		text: `SELECT * from app.pages WHERE id=$1`,
+		text: queries.GET_PAGE_QUERY,
 		values:  [req.param.id]
 	}
 
@@ -19,7 +20,7 @@ const getPage = (req, res) => {
 
 //list all pages
 const listPages = (req, res) => {
-	let query = { text: `SELECT * from app.pages` }	
+	let query = { text:queries.GET_PAGES_QUERY }	
   pool.query(query)
 	.then(result => {
 		const pages = result.rows

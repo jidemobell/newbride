@@ -32,11 +32,14 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
 // jwt local strategy
 const localStrategy = new LocalStrategy((username, password, done) => {
 	pool.query({text:'SELECT * FROM app.users WHERE username=$1', values: [username]}, (err, data) => {
-		if(err) return done(err, {message: 'Invalid Username or Password'})
-		if(!data.rows[0]) return done(null, false, {message: 'Invalid Username or Password'})
-		const match = verifyPassword(password, data.rows[0])
-		if(!match)  return done(null, false, {message: 'Wrong Password'})
-		return done(null, data.rows[0])
+		if(err) return done(err)
+		if(data.rows.length === 0) return done(null, false)
+		verifyPassword(password, data.rows[0])
+		.then(match => {
+			if(!match) return done(null, false)
+			return done(null, data.rows[0])
+		})
+		.catch(err => console.log(new Error('LOGIN VERIFICATION ERR' + err)))
 	})
 })
 

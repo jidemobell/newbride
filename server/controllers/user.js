@@ -1,11 +1,12 @@
 const Database = require("../db/index.js");
+const queries = require('../constants/queryConstants')
 
 const pool = Database.startPool();
 
 //function to get dashboard user and details
 const dashboard = (req, res) => {
   let query = {
-    text: `SELECT * from app.users WHERE id=$1`,
+    text: queries.DASHBOARD_USER_QUERY,
     values: [req.user.id],
   };
 
@@ -18,10 +19,10 @@ const dashboard = (req, res) => {
     .catch((err) => res.status(500).json({ error: err.stack }));
 };
 
+
 //list all registered users
 const listUsers = (req, res) => {
-  console.log("USER route working");
-  let query = `SELECT * from app.users`;
+  let query = queries.USERS_LIST_QUERY
 
   pool
     .query(query)

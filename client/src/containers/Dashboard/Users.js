@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 import {listUsers} from '../../redux/actions/user'
 
-export default function User() {
+export default function User({token}) {
 	const dispatch = useDispatch()
 	const users = useSelector(state => state.users.users)
 
   useEffect(() => {
-		dispatch(listUsers())
- }, [dispatch])
+		dispatch(listUsers(token))
+ }, [dispatch, token])
 
   return (
     <section className="users" style={{ marginTop: "30px" }}>
