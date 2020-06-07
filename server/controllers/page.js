@@ -25,7 +25,7 @@ const listPages = (req, res) => {
 		const pages = result.rows
 		res.status(200).json(pages)
 	})
-	.catch(err => res.status(500).json({ error: err.stack }))
+	.catch(err => res.status(500).json({ error: err }))
 }
 
 module.exports = {

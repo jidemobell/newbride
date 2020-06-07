@@ -6,6 +6,7 @@ const { body, validationResult } = require('express-validator')
 const { login, registerAdmin, adminLogin } = require('../controllers/auth')
 
 const loginAuth = passport.authenticate('local', {session: false})
+const requireAuth = passport.authenticate('jwt', {session: false})
 
 
 
@@ -41,6 +42,12 @@ router.post('/admin/register',loginValidationCheck, (req, res) => {
 		})
 	}
   registerAdmin(req, res)
+})
+
+
+
+router.post('/logout', requireAuth, (req, res) => {
+	logoutUser(req, res)
 })
 
 

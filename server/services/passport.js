@@ -35,7 +35,7 @@ const localStrategy = new LocalStrategy((username, password, done) => {
 		if(err) return done(err, {message: 'Invalid Username or Password'})
 		if(!data.rows[0]) return done(null, false, {message: 'Invalid Username or Password'})
 		const match = verifyPassword(password, data.rows[0])
-		if(!match)  return done(null, false, {message: 'IWrong Password'})
+		if(!match)  return done(null, false, {message: 'Wrong Password'})
 		return done(null, data.rows[0])
 	})
 })

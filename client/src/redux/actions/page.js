@@ -5,7 +5,7 @@ export  function getPage(id){
 	return async dispatch => {
 		let token = localStorage.getItem("token");
 		try {
-			let response = await axios.post(`/page?id=${id}`,
+			let response = await axios.post(`/pages?id=${id}`,
 			{ headers: { Authorization: `Bearer ${token}` } }
 			)
 			console.log(response.data)
@@ -27,9 +27,8 @@ export  function getPage(id){
 export  function listPages(){
 	return async dispatch => {
 		let token = localStorage.getItem("token");
-		console.log('the token at pages', token)
 		try {
-			let response = await axios.post(`/page/list`,
+			let response = await axios.post(`/pages/list`,
 			{ headers: { Authorization: `Bearer ${token}` } }
 			)
 			console.log('front pages', response)

@@ -37,6 +37,12 @@ const registerAdmin = (req, res) => {
 		.catch(error => res.status(500).json(error.stack));
 }
 
+
+
+logoutUser = (req, res) => {
+	
+}
+
 module.exports = {
 	adminLogin,
 	registerAdmin

@@ -48,6 +48,7 @@ export default function App() {
         <Route path="/collections" component={Collections} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        {/*  are you here? */}
         {/* <Route path="/users/dashboard">
 					{
 						isAuthenticated ? <Dashboard   /> : <Login />

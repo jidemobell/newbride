@@ -1,12 +1,16 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 
 import {listPages} from '../../redux/actions/page'
 
-export default function Page() {
+export default function Page({toEdit}) {
   const dispatch = useDispatch()
 	const pages = useSelector(state => state.page.pages)
+	const [pageList] = useState((pages !== undefined) ? pages : [])
+	// const [openEditor, setOpenEditor] = useState(false)
 
+	const editAction = () => toEdit(true)
+	
   useEffect(() => {
 		dispatch(listPages())
  }, [dispatch])
@@ -39,11 +43,11 @@ export default function Page() {
           <tr>
             <th>No</th>
             <th>name</th>
-            <th>created</th>
+            <th>actions</th>
           </tr>
         </thead>
         <tbody>
-          {pages !== undefined && pages.map((page, i) => {
+          {pageList.map((page, i) => {
             return (
               <tr key={page.id}>
                 <td>{i+1}</td>
@@ -51,7 +55,7 @@ export default function Page() {
                 {/* <td>{page.date_created}</td> */}
                 <td>
                   <span className="flex-row">
-                    <button className="button" style={{ marginRight: "8px" }}>
+                    <button className="button" style={{ marginRight: "8px" }} onClick={editAction}>
                       edit
                     </button>
                     {/* <button className="button">Delete</button> */}

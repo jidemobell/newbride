@@ -33,6 +33,15 @@ export function login(data) {
 }
 
 
+
+
+
+export function startLogout(){
+	return (dispatch) => {
+		// you send request to the server 
+	}
+}
+
 export function logout(){
   return (dispatch) => {
     dispatch({

@@ -8,16 +8,15 @@ import Contact from './containers/Contact'
 import About from './containers/About'
 import Login from './containers/Login'
 import Dashboard from './containers/Dashboard/Dashboard'
+import  PrivateRoute from './components/Resusable/PrivateRoute'
+import  PublicRoute from './components/Resusable/PublicRoute'
 
 import {
   Switch,
-	Route,
 	Router
 } from "react-router-dom";
 
 import history from './redux/store/history'
-
-
 
 
 export default function Main() {
@@ -26,16 +25,12 @@ export default function Main() {
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/collections" component={Collections} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/about" component={About} />
-				<Route path="/users/dashboard">
-					{
-						authenticated ? <Dashboard   /> : <Login />
-					}
-				</Route>
-				<Route path="/v1/login" component={Login} />
+        <PublicRoute path="/" exact component={Home} />
+        <PublicRoute path="/collections" component={Collections} />
+        <PublicRoute path="/contact" component={Contact} />
+        <PublicRoute path="/about" component={About} />
+        <PublicRoute  path="/v1/login" component={Login} />
+        <PrivateRoute path="/users/dashboard" component={Dashboard} isAuthenticated={authenticated} redirectPath={"/v1/login"}/>
       </Switch>
     </Router>
   );

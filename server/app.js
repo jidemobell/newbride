@@ -30,7 +30,7 @@ app.use("/", indexRouter);
 app.use("/v1", authRouter);
 app.use("/users", usersRouter);
 app.use("/image", ImageRouter);
-app.use("/page", pageRouter);
+app.use("/pages", pageRouter);
 app.use(passport.initialize());
 
 // catch 404 and forward to error handler
