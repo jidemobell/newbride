@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS app.pages_images_table (
 );
 
 ALTER TABLE app.pages DROP COLUMN IF EXISTS images_ids;
+ALTER TABLE app.pages_images_table DROP COLUMN sn IF EXISTS;
+ALTER TABLE app.pages_images_table ADD COLUMN IF NOT EXISTS entry_no INTEGER NOT NULL;
 
 ALTER TABLE app.users ADD COLUMN IF NOT EXISTS role_type TEXT;
 ALTER TABLE app.images ADD COLUMN IF NOT EXISTS page_ids JSONB[];

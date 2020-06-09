@@ -1,7 +1,9 @@
 require("dotenv").config()
 const cloudinary = require("cloudinary")
+
 const Database = require("../db/index.js")
 const pool = Database.startPool()
+const apiQueries = require('../constants/queryConstants')
 
 const cloudinaryOptions =  {
   cloud_name: process.env.CLOUDINARY_CLOUDNAME,
@@ -17,7 +19,7 @@ cloudinary.config(cloudinaryOptions);
 //fetch all cloudinary image urls from database 
 const listCloudinaryImagesFromDB = (req, res) => {
   let query = {
-   text: `select * from app.cloudinary`,
+   text: apiQueries.LIST_CLOUDINARY_IMAGES,
   }
 
   pool.query(query).then((result) => {
@@ -41,7 +43,7 @@ const getImageFromCloudinaryAPI = (req, res) => {
         for (let [i, photo] of data.entries()) {
           const { public_id, url, created_at } = photo;
           let query = {
-            text: `INSERT INTO app.cloudinary (public_id, url, uploaded_at) VALUES ($1, $2, $3) ON CONFLICT ON CONSTRAINT cloudinary_public_id_key DO NOTHING;`,
+            text: apiQueries.UPDATE_CLOUDINARY_FROM_API,
             values: [public_id, url, created_at],
           };
           pool
@@ -58,13 +60,53 @@ const getImageFromCloudinaryAPI = (req, res) => {
   );
 };
 
+//attach an image to a page and keep the order
+const attachImageTopage = (req, res) => {
+	//this is not an update action. 
+	//automatically the entry no is recieved as the next index and will be reserved
+	const { page_name, image_id, entry_no } = req.body
+  let query = {
+		text: apiQueries.ATTACH_IMAGE_TO_PAGE,
+		values: [page_name, image_id, entry_no]
+	 }
+ 
+	 pool.query(query).then((result) => {
+			 res.status(200).send(result.rows);
+		 })
+		 .catch((err) => console.log(err));
+}
 
-// list all page images with their order
+const removeImageFromPage = (req,res) => {
+	 //here we keep the order number;
+	 const {entry_no} = req.body
+	 let query = {
+		text: apiQueries.REMOVE_IMAGE_FROM_PAGE,
+		values: [entry_no]
+	 }
+	 pool.query(query).then((result) => {
+		res.status(200).send(result.rows);
+	})
+	.catch((err) => console.log(err));
+	 
+}
 
-
+//list all images being used on a page by order
+listImagesForAPage = (req, res) => {
+	const {page_name} = req.body
+	let query = {
+	 text: apiQueries.LIST_IMAGES_ON_PAGE,
+	 values: [page_name]
+	}
+	pool.query(query).then((result) => {
+	 res.status(200).send(result.rows);
+ })
+ .catch((err) => console.log(err));
+}
 
 module.exports = {
-  // fetchCloudinaryImagesFromDb,
   getImageFromCloudinaryAPI,
-  listCloudinaryImagesFromDB,
+	listCloudinaryImagesFromDB,
+	attachImageTopage,
+	removeImageFromPage,
+	listImagesForAPage
 };
