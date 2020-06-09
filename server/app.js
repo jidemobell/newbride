@@ -10,8 +10,8 @@ const cors = require("cors");
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const ImageRouter = require("./routes/images");
-const pageRouter = require("./routes/page");
+const ImageRouter = require("./routes/cloudinary");
+const pageRouter = require("./routes/page")
 
 const app = express();
 

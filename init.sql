@@ -27,6 +27,13 @@ CREATE TABLE IF NOT EXISTS app.cloudinary (
 	inserted_at TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS app.pages_images_table (
+	sn SERIAL NOT NULL PRIMARY KEY,
+	page_name TEXT REFERENCES app.pages(page_name),
+	image_id UUID REFERENCES app.cloudinary(id)
+);
+
+ALTER TABLE app.pages DROP COLUMN IF EXISTS images_ids;
 
 ALTER TABLE app.users ADD COLUMN IF NOT EXISTS role_type TEXT;
 ALTER TABLE app.images ADD COLUMN IF NOT EXISTS page_ids JSONB[];
