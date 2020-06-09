@@ -103,10 +103,25 @@ listImagesForAPage = (req, res) => {
  .catch((err) => console.log(err));
 }
 
+
+//delete an image from gallery
+deleteImageFromGallery = (req, res) => {
+	const {image_id} = req.body
+	let query = {
+		text: apiQueries.DEL_IMAGE_FROM_GALLERY,
+		values: [image_id]
+	 }
+	 pool.query(query).then((result) => {
+		res.status(200).send(result.rows);
+	})
+	.catch((err) => console.log(err));
+}
+
 module.exports = {
   getImageFromCloudinaryAPI,
 	listCloudinaryImagesFromDB,
 	attachImageTopage,
 	removeImageFromPage,
-	listImagesForAPage
+	listImagesForAPage,
+	deleteImageFromGallery
 };

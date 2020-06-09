@@ -28,4 +28,7 @@ router.post("/unlink/frompage", (req, res) => cloudinary.removeImageFromPage(req
 //list al images on a page
 router.post("/get/page/images", (req, res) => cloudinary.listImagesForAPage(req, res))
 
+//delete image from gallery
+router.post("/delete/from/gallery", (req, res) => cloudinary.deleteImageFromGallery(req, res))
+
 module.exports = router;

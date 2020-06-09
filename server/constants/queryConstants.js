@@ -12,7 +12,8 @@ const UPDATE_CLOUDINARY_FROM_API =`INSERT INTO app.cloudinary (public_id, url, u
 const LIST_CLOUDINARY_IMAGES = `select * from app.cloudinary;`
 const ATTACH_IMAGE_TO_PAGE = 'INSERT INTO app.pages_images_table(page_name,image_id,entry_no) VALUES ($1,$2,$3);'
 const REMOVE_IMAGE_FROM_PAGE = 'UPDATE app.pages_images_table SET page_name=null,image_id=null WHERE entry_no = $1;'
-const LIST_IMAGES_ON_PAGE = 'select * from app.pages_images_table where page_name = $1 order by entry_no;'
+const LIST_IMAGES_ON_PAGE = `select * from app.pages_images_table where page_name = '$1' order by entry_no;`
+const DEL_IMAGE_FROM_GALLERY = `delete from app.cloudinary where id = '$1'`;
 
 
 module.exports = {
@@ -25,5 +26,6 @@ module.exports = {
 	LIST_CLOUDINARY_IMAGES,
 	ATTACH_IMAGE_TO_PAGE,
 	REMOVE_IMAGE_FROM_PAGE,
-	LIST_IMAGES_ON_PAGE
+	LIST_IMAGES_ON_PAGE,
+	DEL_IMAGE_FROM_GALLERY
 }

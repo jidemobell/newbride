@@ -28,14 +28,15 @@ CREATE TABLE IF NOT EXISTS app.cloudinary (
 );
 
 CREATE TABLE IF NOT EXISTS app.pages_images_table (
-	sn SERIAL NOT NULL PRIMARY KEY,
+	entry_no INTEGER UNIQUE NOT NULL;
 	page_name TEXT REFERENCES app.pages(page_name),
-	image_id UUID REFERENCES app.cloudinary(id)
+	image_id UUID REFERENCES app.cloudinary(id) ON DELETE SET NULL
 );
 
 ALTER TABLE app.pages DROP COLUMN IF EXISTS images_ids;
 ALTER TABLE app.pages_images_table DROP COLUMN sn IF EXISTS;
 ALTER TABLE app.pages_images_table ADD COLUMN IF NOT EXISTS entry_no INTEGER NOT NULL;
+
 
 ALTER TABLE app.users ADD COLUMN IF NOT EXISTS role_type TEXT;
 ALTER TABLE app.images ADD COLUMN IF NOT EXISTS page_ids JSONB[];
@@ -46,6 +47,7 @@ ALTER TABLE app.pages ADD COLUMN IF NOT EXISTS date_edited TIMESTAMP;
 
 ALTER TABLE app.users ALTER COLUMN role_type SET DEFAULT 'users';
 ALTER TABLE app.users ALTER COLUMN date_created SET DEFAULT NOW();
+ALTER TABLE app.pages_images_table ALTER COLUMN entry_no SET NOT NULL;
 
 
 ALTER TABLE app.users ALTER COLUMN username SET DATA TYPE TEXT;
