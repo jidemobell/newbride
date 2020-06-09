@@ -31,6 +31,7 @@ const listCloudinaryImagesFromDB = (req, res) => {
 
 //get an image from cloudinary API and save API details to the DB
 const getImageFromCloudinaryAPI = (req, res) => {
+	console.log('calling route')
   cloudinary.v2.api.resources(
     {
       type: "upload",
@@ -39,7 +40,7 @@ const getImageFromCloudinaryAPI = (req, res) => {
     (error, result) => {
       if (error) console.log(error);
       const data = result.resources;
-      async function updateClodinaryPhotos() {
+      async function updateCloudinaryPhotos() {
         for (let [i, photo] of data.entries()) {
           const { public_id, url, created_at } = photo;
           let query = {
@@ -53,8 +54,8 @@ const getImageFromCloudinaryAPI = (req, res) => {
           if (i == data.length - 1) return "done";
         }
       }
-      updateClodinaryPhotos()
-        .then((message) => message)
+      updateCloudinaryPhotos()
+        .then((message) => listCloudinaryImagesFromDB(req, res))
         .catch((err) => console.log(err));
     }
   );

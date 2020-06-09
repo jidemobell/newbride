@@ -4,16 +4,13 @@ import { PULL_PHOTOS, LIST_PHOTOS } from '../actionConstants';
 
 
 
-export const pullImages = () => {
+export const uploadImage = () => {
 	return dispatch => {
-		axios.get('/image/getcloudinaryphotos')
+		axios.post('/image/push/getcloudinaryphotos')
 	.then((response) => {
+		console.log("the upload response", response)
 		if(response.status === 200){
-			console.log(response)
-			dispatch( {
-				type: PULL_PHOTOS,
-				payload: response.data
-			})
+			dispatch(listCloudinaryPhotos())
 		}
 	})
 	.catch((err) => {

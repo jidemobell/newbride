@@ -28,13 +28,13 @@ CREATE TABLE IF NOT EXISTS app.cloudinary (
 );
 
 CREATE TABLE IF NOT EXISTS app.pages_images_table (
-	entry_no INTEGER UNIQUE NOT NULL;
+	entry_no INTEGER UNIQUE NOT NULL,
 	page_name TEXT REFERENCES app.pages(page_name),
 	image_id UUID REFERENCES app.cloudinary(id) ON DELETE SET NULL
 );
 
-ALTER TABLE app.pages DROP COLUMN IF EXISTS images_ids;
-ALTER TABLE app.pages_images_table DROP COLUMN sn IF EXISTS;
+-- ALTER TABLE app.pages DROP COLUMN IF EXISTS images_ids;
+-- ALTER TABLE app.pages_images_table DROP COLUMN sn IF EXISTS;
 ALTER TABLE app.pages_images_table ADD COLUMN IF NOT EXISTS entry_no INTEGER NOT NULL;
 
 

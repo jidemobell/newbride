@@ -1,17 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {  useSelector, useDispatch } from "react-redux";
 
 import Gallery from "../Photos/Gallery";
-import { pullImages, listCloudinaryPhotos } from "../../redux/actions/photos";
+import { uploadImage, listCloudinaryPhotos } from "../../redux/actions/photos";
 
 
 
 
 export default function Images({token}) {
 	const cloudinaryArray = useSelector(state => state.photos.photos);
-
-	
 	const dispatch = useDispatch()
+
+
   let widgetWindow = window.cloudinary.createUploadWidget(
     {
       cloudName: process.env.REACT_APP_CLOUDINARY_CLOUDNAME,
@@ -20,12 +20,16 @@ export default function Images({token}) {
     },
     (err, result) => {
       if (!err && result && result.event === "success") {  
-				dispatch(pullImages(token));
-				setInterval(dispatch(listCloudinaryPhotos), 2000)
+				dispatch(uploadImage(token));
+				// setInterval(dispatch(listCloudinaryPhotos), 2000)
 				// console.log(result.info);
       }
     }
-  );
+	);
+	
+	useEffect(() => {
+		dispatch(listCloudinaryPhotos())
+	}, [dispatch])
 
   const handleUpload = () => {
     let windowFeatures = `width=500,height=600,left=200,top=200`;
