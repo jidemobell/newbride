@@ -11,7 +11,7 @@ var child;
 
 
 
-
+// pg_isready -U "postgres" -h 127.0.0.1 -p 5432
 child = exec(dbConstants.PG_READY_COMMAND, (err, stdout, stderr) => {
   if (err) {
     console.error({
@@ -27,6 +27,7 @@ child = exec(dbConstants.PG_READY_COMMAND, (err, stdout, stderr) => {
 	let newPool = Database.startPool()
 	Database.queryDb(dbConstants.PG_STARTDB_QUERY, newPool)
 	.then(result => {
+		console.log("able to retrieve schema app inside schemata")
 		console.log(dbConstants.PG_CONNECTED_MESSAGE)
 		console.log(dbConstants.PG_VERIF_MESSAGE)
 		if(result.rows[0].schema_name === 'app'){
@@ -50,19 +51,28 @@ class Database {
         connectionString: connectionString
       });
     } else if (process.env.NODE_ENV === appConstants.TEST) {
-      this.db = "testDb";
+			console.log("seems test")
       pool = new Pool();
     } else if (process.env.NODE_ENV === appConstants.DEV){
       pool = new Pool();
+			console.log("seems devs", pool)
 		}
 		return pool
 	}
+
+	 /**
+	 * 
+	 * function to check postgres database server connections 
+	 * and configurations sucs as SCHEMA_NAME
+	 * @param {*} text 
+	 * @param {*} pool 
+	 * @returns 
+	 */
 	
 	static async queryDb(text, pool) {
 		console.log(dbConstants.PG_INIT_DATA_MESSAGE)
 		try {
-			const res = await pool.query(text);
-			return res
+			return await pool.query(text);
 		} catch (err) {
 			throw err.stack;
 		}

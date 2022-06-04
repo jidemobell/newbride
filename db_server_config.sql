@@ -1,6 +1,6 @@
 CREATE USER "admin" WITH PASSWORD 'password';
 CREATE ROLE
-CREATE USER "app-user" WITH PASSWORD 'password';
+CREATE USER "app_user" WITH PASSWORD 'password';
 CREATE ROLE
 CREATE DATABASE "bridal" WITH OWNER "admin";
 CREATE DATABASE
@@ -8,7 +8,7 @@ CREATE DATABASE
 -- You are now connected to database "test-database" as user "postgres".
 DROP SCHEMA "public";
 DROP SCHEMA
-CREATE SCHEMA "app" AUTHORIZATION "app-admin";
+CREATE SCHEMA "app" AUTHORIZATION "app_admin";
 CREATE SCHEMA
 
 

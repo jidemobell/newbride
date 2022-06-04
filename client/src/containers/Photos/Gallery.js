@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import { Image, CloudinaryContext, Transformation } from "cloudinary-react";
 import "../../css/gallery.css";
 

@@ -32,11 +32,8 @@
   "scripts": {
     "start": "node src/index.js",
     "server": "nodemon  src/index.js",
-    "client": "cd client && yarn start",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "client": "cd client && pnpm start",
+    "dev": "concurrently --kill-others-on-fail \"pnpm server\" \"pnpm client\"",
     "heroku-postbuild": "cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn run build"
-  },
-  "engines": {
-    "node": "12.x"
   }
 }

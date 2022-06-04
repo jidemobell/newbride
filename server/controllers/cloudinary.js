@@ -23,6 +23,7 @@ const listCloudinaryImagesFromDB = (req, res) => {
   }
 
   pool.query(query).then((result) => {
+		  console.log(result.rows)
       res.status(200).send(result.rows);
     })
     .catch((err) => console.log(err));

@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import { PULL_PHOTOS, LIST_PHOTOS } from '../actionConstants';
+import { LIST_PHOTOS } from '../actionConstants';
 
 
 
