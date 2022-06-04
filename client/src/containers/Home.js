@@ -1,6 +1,6 @@
 import React from "react";
 
-import signature from "../images/big_sign.png";
+// import signature from "../images/big_sign.png";
 // import design from "./images/cropped-bridals.png";
 // import instagram from "../images/ig2.svg";
 // import facebook from "../images/fb.svg";
@@ -27,12 +27,12 @@ function App() {
             <p> CUSTOM BRIDAL </p>
             <a href="http://fakelink"> BOOK AN APPOINTMENT </a>
             <div>
-              <img
+              {/* <img
                 src={signature}
                 id="signature"
                 className="shrink"
                 alt="signature"
-              />
+              /> */}
             </div>
           </div>
         </section>

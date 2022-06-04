@@ -18,7 +18,7 @@ const store= configureStore()
 
 //global axios defaults
 axios.defaults.headers.common["Content-Type"] = "application/json";
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "http://localhost:5001";
 
 
 
@@ -30,6 +30,22 @@ const render = () => {
     document.getElementById('root')
   )
 }
+
+// const render = () => {
+//   ReactDOM.render(
+//     <Provider>
+//       <Main />
+//     </Provider>,
+//     document.getElementById('root')
+//   )
+// }
+
+// const render = () => {
+//   ReactDOM.render(
+//       <Main />
+//     ,document.getElementById('root')
+//   )
+// }
 
 render()
 

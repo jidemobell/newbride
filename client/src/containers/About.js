@@ -4,7 +4,7 @@ import Header from "../components/Headers/Header";
 import Footer from "../components/Footer";
 
 import group from "../images/group.jpg";
-import sign from "../images/big_sign.png";
+// import sign from "../images/big_sign.png";
 
 export default function About() {
   return (
@@ -33,7 +33,7 @@ export default function About() {
                 whole new different look and meaning.
               </span>
               <img
-                src={sign}
+                // src={sign}
                 alt="sign"
                 style={{ width: "80px", margin: "5px 0px" }}
               />

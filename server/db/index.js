@@ -51,11 +51,9 @@ class Database {
         connectionString: connectionString
       });
     } else if (process.env.NODE_ENV === appConstants.TEST) {
-			console.log("seems test")
       pool = new Pool();
     } else if (process.env.NODE_ENV === appConstants.DEV){
       pool = new Pool();
-			console.log("seems devs", pool)
 		}
 		return pool
 	}
@@ -84,7 +82,7 @@ class Database {
 				if (err) {
 					console.error('error reading sql file', err);
 				}
-				pool.query(data , (err, res) => {
+				pool.query(data , (err) => {
 					if (err) {
 						console.error('SQL ERR: ', err);
 					}
