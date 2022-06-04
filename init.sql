@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS app.pages (
 );
 
 CREATE TABLE IF NOT EXISTS app.cloudinary (
-  id SERIAL PRIMARY KEY,
+  id UUID PRIMARY KEY,
   public_id TEXT UNIQUE NOT NULL,
 	url TEXT  NOT NULL,
 	uploaded_at TEXT,
